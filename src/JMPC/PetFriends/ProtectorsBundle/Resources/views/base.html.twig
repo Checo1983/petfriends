@@ -1,0 +1,136 @@
+{# src/JMPC/PetFriends/ProtectorsBundle/Resources/views/base.html.twig #}
+{# Plantilla extendida de la plantilla base #}
+
+{% extends '::base.html.twig' %}
+
+{% block meta %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="{{ asset('img/favicon.ico') }}">
+    <link rel="shortcut icon" href="{{ asset('img/favicon.ico') }}" />
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/slider.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/form.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/blog.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/sidebar.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/jquery-ui-1.10.4.custom.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/jquery.minicolors.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/smartphone.css') }}">
+{% endblock %}
+
+{% block javascript %}
+    <script src="{{ asset('js/jquery-1.10.2.js') }}"></script>
+    <script src="{{ asset('js/jquery_validate.js') }}"></script>
+    <script src="{{ asset('js/jquery.minicolors.js') }}"></script>
+    <script src="{{ asset('js/jquery-migrate-1.1.1.js') }}"></script>
+    <script src="{{ asset('js/superfish.js') }}"></script>
+    <script src="{{ asset('js/jquery.carouFredSel-6.1.0-packed.js') }}"></script>
+    <script src="{{ asset('js/jquery.easing.1.3.js') }}"></script>
+    <script src="{{ asset('js/jquery.ui.totop.js') }}"></script>
+    <script src="{{ asset('js/jquery-ui-1.10.4.custom/jquery-ui-1.10.4.custom.js') }}"></script>
+    <script src="{{ asset('js/jquery-ui-1.10.4.custom/development-bundle/ui/i18n/jquery.ui.datepicker-es.js') }}"></script>
+    <script src="{{ asset('js/ajax.js') }}"></script>
+    {# <script src="{{ asset('js/canvas.js') }}"></script> #}
+    <script> Nowtalk = []; Nowtalk.config = {fullscreen: false, session_id: 0, base_url: "https://www.nowtalk.com", widget_url: "https://www.nowtalk.com/chat", chat_id: "53c99e0b08243", debug: false }; document.write(unescape("%3Cscript src='https://www.nowtalk.com/build/embed_nowtalk.min.js?' type='text/javascript'%3E%3C/script%3E")); </script>
+    <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script>
+{% endblock %}
+     
+{% block login %}
+    <div id="login_container">
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+        
+        <div id="login">
+            {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}
+            <a href="{{ path('fos_user_profile_show') }}">Ver perfil</a>
+            <a href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a>
+            {% if is_granted("ROLE_ADMIN") %}
+            <a href="{{ path('jmpc_pet_friends_protectors_admin') }}">Administración</a>
+            {% endif %}
+        </div>
+        <div class="content_icon">
+            <span class="login_icon"></span>
+        </div>
+        {% else %}
+        <div id="loginContainer">
+            <a href="#" id="loginButton"><span>Acceso</span><em></em></a>
+            <div class="clear"></div>
+                <div id="loginBox">                          
+                {% render controller("FOSUserBundle:Security:login") %} 
+                </div>
+        </div>
+        {% endif %}
+    </div>
+    {% render controller("FOSUserBundle:Registration:register") %} 
+{% endblock %}
+
+{% block menu_block %}
+    <div class="menu_block">                 
+        <nav  class="navigation" >
+            <ul class="sf-menu">
+                <li class="current"><a href="{{ path('jmpc_pet_friends_protectors_homepage') }}">La Protectora</a></li>
+                <li class="with_ul"><a href="{{ path('jmpc_pet_friends_protectors_animals_list') }}">Nuestros amigos</a>
+                    <ul>
+                        <li><a href="{{ path('jmpc_pet_friends_protectors_animals_dogs') }}">Perros</a></li>
+                        <li><a href="{{ path('jmpc_pet_friends_protectors_animals_cats') }}">Gatos</a></li>
+                        <li><a href="{{ path('jmpc_pet_friends_protectors_animals_birds') }}">Aves</a></li>
+                        <li><a href="{{ path('jmpc_pet_friends_protectors_animals_others') }}">Otras especies</a></li>
+                    </ul>
+                </li>
+                <li><a href="{{ path('jmpc_pet_friends_protectors_adopteds')}}">Adoptados</a></li>
+                <li><a href="{{ path('jmpc_pet_friends_protectors_lost') }}">Mascotas perdidas</a></li>
+                <li><a href="{{ path('jmpc_pet_friends_protectors_about') }}">Como adoptar</a></li>
+                <li><a href="{{ path('jmpc_pet_friends_protectors_contact') }}">Contacto</a></li>
+            </ul>
+        </nav>
+        <div class="clear"></div>
+    </div><!-- End menu_block -->
+{% endblock %}
+{% block top_block %}
+    <div class="top_block">
+        <div class="slider-relative">
+            <div class="slider-block">
+                <div class="slider">
+                    <div class="css-carousel">
+                        <img class="css-img" src="{{ asset('img/slide.jpg') }}" />
+                        <img class="css-img" src="{{ asset('img/slide1.jpg') }}" />
+                        <img class="css-img" src="{{ asset('img/slide2.jpg') }}" />
+                        <img class="css-img" src="{{ asset('img/slide3.jpg') }}" />
+                        <img class="css-img" src="{{ asset('img/slide2.jpg') }}" />
+                        <img class="css-img" src="{{ asset('img/slide1.jpg') }}" />
+                    </div>
+                </div><!-- End slider --> 
+            </div><!-- End slider_block --> 
+        </div><!-- End slider_relative --> 
+    </div><!-- End top_block -->
+{% endblock %}
+
+{% block section %}{% endblock %}
+
+{% block sidebar %}
+{% render (controller("JMPCPetFriendsProtectorsBundle:Page:lateral")) %}
+{% endblock %}
+        
+{% block content %}
+<div class="content page1"><div class="ic"></div>
+    <div class="container_12">
+        <div class="grid_13 prefix_0">
+            <a href="#" class="next"></a><a href="#" class="prev"></a>
+                <h2>Animales de la protectora</h2>
+        </div> <!-- End grid_13 prefix_0 --> 
+        <div class="clear"></div>
+        {% block carousel %}
+        {% render (controller("JMPCPetFriendsProtectorsBundle:Page:carousel")) %}
+        {% endblock %}
+    </div><!-- End container_12 --> 
+</div><!-- End content_page1-->
+{% endblock %}
+              
+
+        
+
+              
+

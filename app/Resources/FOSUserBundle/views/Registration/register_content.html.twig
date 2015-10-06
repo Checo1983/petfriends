@@ -1,0 +1,28 @@
+{# app/Resources/FOSUserBundle/views/Registration/register_content.html.twig #}
+{# Plantilla sobreescrita FOSUserBundle para registro de usuarios #}
+
+
+{% trans_default_domain 'FOSUserBundle' %}
+<div id="dialogoFormulario" title="Registro de Usuario" style="display:none;">
+<form id="form_register" action="{{ path('fos_user_registration_register') }}" method="POST"
+class="fos_user_registration_register" {{ form_enctype(form) }}>
+    {{ form_errors(form) }}<div class="check_email"></div>
+    {{ form_row(form.email) }}<div class="check_user"></div>
+    {{ form_row(form.username) }}
+    {{ form_row(form.plainPassword) }}
+    {{ form_row(form.nombre) }}
+    {{ form_row(form.nombre_pais) }}
+    {{ form_row(form.nombre_ciudad) }}
+    {{ form_row(form.nombre_mascota) }}
+    {{ form_row(form.especie) }}
+    {{ form_row(form.sobre_vosotros) }}
+    {{ form_row(form._token) }}
+
+	<input id="route_val_user" type="hidden" value="{{ path('jmpc_pet_friends_validate') }}"/>
+	<input id="route_val_email" type="hidden" value="{{ path('jmpc_pet_friends_validate_email') }}"/>
+    <div>
+        <input class="boton" type="submit" value="{{ 'registration.submit'|trans }}" 
+        disabled="disabled" />
+    </div>
+</form>
+</div>

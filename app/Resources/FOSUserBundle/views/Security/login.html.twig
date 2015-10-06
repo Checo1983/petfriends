@@ -1,0 +1,31 @@
+{# app/Resources/FOSUserBundle/views/Security/login.html.twig #}
+{# Plantilla sobreescrita FOSUserBundle para formulario Login #}
+
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+    
+<form id="loginForm" action="{{ path("fos_user_security_check") }}" method="post">
+    <fieldset id="body">
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+        
+        <fieldset>
+        <label for="username">{{ 'security.login.username'|trans }}</label>
+        <input type="text" id="username" name="_username" value="{{ last_username }}" placeholder="Usuario" required="required" />
+        </fieldset>
+        <fieldset>
+        <label for="password">{{ 'security.login.password'|trans }}</label>
+        <input type="password" id="password" name="_password" placeholder="Contraseña" required="required" />
+        </fieldset>
+        <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+        <input type="checkbox" id="checkbox" name="_remember_me" value="on" />
+        {% if error %}
+            <div class="errors">*{{ error|trans }}</div>
+        {% endif %}
+        <input type="submit" id="loginButton" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+        <span>Si no estas registrado <a class="register_button" href="#">haz click aquí</a></span>
+    </fieldset>
+</form>
+{% endblock fos_user_content %}

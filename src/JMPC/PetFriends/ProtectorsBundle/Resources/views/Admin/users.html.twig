@@ -1,0 +1,31 @@
+{# src/JMPC/PetFriends/ProtectorsBundle/Resources/views/Admin/index.html.twig #}
+{# Plantilla del administrador del sitio web #}
+{# El administrador puede ver aqui usuarios y realizar gestiones #}
+
+{% extends 'JMPCPetFriendsProtectorsBundle::base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/transdmin.css') }}">
+    <script type="text/javascript" src="js/jNice.js"></script>
+
+{% endblock %}
+{% block top_block %}{% endblock %}
+{% block content %}{% endblock %}
+{% block sidebar %}{% endblock %}
+
+{% block section %}
+	<h3>Usuarios registrados</h3>
+	<ul>
+	{% for user in users %}
+		{% if user.username != 'admin' %}
+		<li><a href="{{ path('fos_user_profile_show') }}">{{ user.nombre }}</a><br><span><a href="#">Borrar usuario </a></span><span><a href="#"> Escribir Email</a></span></li>
+		{% endif %}
+	{% endfor %}	
+	</ul>
+	<div class="paginacion">
+        {{ knp_pagination_render(users) }}
+    </div>
+    <a href="{{ path('jmpc_pet_friends_protectors_admin') }}">Volver</a>
+{% endblock %}

@@ -1,0 +1,11 @@
+{# src/JMPC/PetFriends/ProtectorsBundle/Resources/views/Comments/form.html.twig #}
+{# Plantilla que crea comentarios de cada entrada del blog en el sitio web #}
+{# Acceso: Usuario registrado #}
+
+<form method="post" action="{{ path('jmpc_pet_friends_protectors_comment_create', { 'post_id' : comment.contenido.id } ) }}" {{ form_enctype(form) }} class="blogger">
+    {{ form_widget (form) }} 
+    <p>
+    	<input type="submit" value="Enviar">
+    </p>
+</form>
+

@@ -1,0 +1,231 @@
+
+/**********************************************************/
+/*              Hoja de estilos Form.css                  */
+/* Estiliza los formularios para crear/modificar entradas */
+/* y del formulario de contacto del sitio web PetsFriends */
+/*                                                        */
+/**********************************************************/
+
+#form
+{
+    padding-top: 3px;
+
+    //padding-right: 20px;
+}
+
+#form input
+{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 20px;
+
+    float: left;
+
+    -webkit-box-sizing: border-box; /* Safari */
+       -moz-box-sizing: border-box; /*Firefox 1-3*/
+            box-sizing: border-box;
+    margin-top: 5px;
+    padding: 5px 14px;
+
+    color: #5e5e5e;
+    border: 3px solid #e6e6e6;
+
+    //width: 100%;
+    //height: 40px;
+}
+
+#form textarea
+{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 20px;
+
+    position: relative;
+
+    float: left;
+    overflow: auto;
+
+    -webkit-box-sizing: border-box; /* Safari */
+       -moz-box-sizing: border-box; /*Firefox 1-3*/
+            box-sizing: border-box;
+    width: 100%;
+    height: 273px;
+    margin: 0;
+    padding: 5px 14px;
+
+    resize: none;
+
+    color: #5e5e5e;
+    border: 3px solid #e6e6e6;
+}
+
+#form label
+{
+    position: relative;
+
+    display: block;
+    float: left;
+
+    width: 320px;
+    min-height: 45px;
+}
+
+#form .error,
+#form .empty
+{
+    font-size: 11px;
+    line-height: 14px;
+
+    position: absolute;
+    z-index: 999;
+    top: 12px;
+    right: -160px;
+
+    display: none;
+    float: right;
+
+    width: auto;
+
+    color: #f00;
+}
+
+#form ul
+{
+    font-size: 12px;
+
+    margin-top: -10px;
+    padding-right: 20px;
+
+    color: #f00;
+}
+
+#form .error-empty
+{
+    display: none;
+    float: left;
+}
+
+#form_lost
+{
+    padding-left: 187px;
+}
+
+.btns
+{
+    float: right;
+
+    padding-top: 46px;
+    padding-right: 25px;
+
+    text-align: left;
+}
+
+.content .btns a.btn
+{
+    min-width: 10px;
+    margin: 0 0 0 21px !important;
+
+    cursor: pointer;
+}
+
+.content .btns a:first-child
+{
+    margin-left: 0 !important;
+}
+
+#form .message
+{
+    width: 100%;
+}
+
+.message br
+{
+    line-height: 0;
+
+    height: 0;
+}
+
+#form .success
+{
+    position: absolute;
+    z-index: 999;
+
+    display: none;
+
+    -webkit-box-sizing: border-box; /* Safari */
+       -moz-box-sizing: border-box; /*Firefox 1-3*/
+            box-sizing: border-box;
+    width: 220px;
+    padding: 20px 10px;
+
+    text-align: center;
+
+    color: #5e5e5e;
+    border: 1px solid #e6e6e6;
+    background: #fff;
+}
+
+.success_wrapper
+{
+    position: relative;
+}
+
+#form .select-style
+{
+    position: relative;
+
+    width: 500px;
+    margin-top: 5px;
+}
+
+#form select
+{
+    font-size: 14px;
+    line-height: 100%;
+
+    width: 100%;
+    height: 40px;
+    padding: 10px;
+
+    color: #585757;
+    border: 1px solid #c1c1c1;
+    border-radius: 0;
+    background: #f3f3f3;
+
+    -webkit-appearance: none;
+}
+
+#form option
+{
+    padding: 10px;
+}
+
+#form .select-style:after
+{
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    display: block;
+
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+       -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+            box-sizing: border-box;         /* Opera/IE 8+ */
+    width: 30px;
+    height: 30px;
+
+    content: '';
+    pointer-events: none;
+
+    border: 1px solid #c1c1c1;
+    background: #ebebeb;
+    background-image: url('http://www.ideup.com/sites/all/themes/ideup/img/bullet--arrow--down.gif');
+    background-image: url('http://www.ideup.com/sites/all/themes/ideup/img/bullet--arrow--down.gif'), -moz-linear-gradient(top,#dfdfdf 0%,#f6f6f6 100%);
+    background-image: url('http://www.ideup.com/sites/all/themes/ideup/img/bullet--arrow--down.gif'), -webkit-gradient(linear,left top,left bottom,color-stop(0%,#dfdfdf),color-stop(100%,#f6f6f6));
+    background-image: url('http://www.ideup.com/sites/all/themes/ideup/img/bullet--arrow--down.gif'), -webkit-linear-gradient(top,#dfdfdf 0%,#f6f6f6 100%);
+    background-image: url('http://www.ideup.com/sites/all/themes/ideup/img/bullet--arrow--down.gif'), -o-linear-gradient(top,#dfdfdf 0%,#f6f6f6 100%);
+    background-image: url('http://www.ideup.com/sites/all/themes/ideup/img/bullet--arrow--down.gif'), -ms-linear-gradient(top,#dfdfdf 0%,#f6f6f6 100%);
+    background-image: url('http://www.ideup.com/sites/all/themes/ideup/img/bullet--arrow--down.gif'), linear-gradient(top,#dfdfdf 0%,#f6f6f6 100%);
+    background-repeat: no-repeat;
+    background-position: center center;
+}

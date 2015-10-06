@@ -1,0 +1,5 @@
+_assetic:
+    resource: .
+    type: assetic
+_app:
+    resource: /nfs/http7/checo1983/www/proyecto/app/config/routing_dev.yml

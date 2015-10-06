@@ -1,0 +1,2542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>API Documentation</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="https://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+    <![endif]-->
+    <script src="https://code.jquery.com/jquery-1.11.0.min.js" type="text/javascript"></script>
+    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown">
+                        <a href="../index.html" class="dropdown-toggle" data-toggle="dropdown">
+                            API Documentation <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                                                        <li><a href="../namespaces/JMPC.html">\JMPC</a></li>
+                                                    </ul>
+                    </li>
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">243</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                            <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-300702604"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-300702604" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1646365786"></a>
+                                <a href="../namespaces/JMPC.html" style="margin-left: 30px; padding-left: 0">JMPC</a>
+            </div>
+            <div id="namespace-1646365786" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1205849013"></a>
+                                <a href="../namespaces/JMPC.PetFriends.html" style="margin-left: 30px; padding-left: 0">PetFriends</a>
+            </div>
+            <div id="namespace-1205849013" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-858475432"></a>
+                                <a href="../namespaces/JMPC.PetFriends.ProtectorsBundle.html" style="margin-left: 30px; padding-left: 0">ProtectorsBundle</a>
+            </div>
+            <div id="namespace-858475432" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-52386227"></a>
+                                <a href="../namespaces/JMPC.PetFriends.ProtectorsBundle.Controller.html" style="margin-left: 30px; padding-left: 0">Controller</a>
+            </div>
+            <div id="namespace-52386227" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/JMPC.PetFriends.ProtectorsBundle.Controller.AnimalsController.html">AnimalsController</a></li>
+                                                    <li class="class"><a href="../classes/JMPC.PetFriends.ProtectorsBundle.Controller.CommentsController.html">CommentsController</a></li>
+                                                    <li class="class"><a href="../classes/JMPC.PetFriends.ProtectorsBundle.Controller.LostController.html">LostController</a></li>
+                                                    <li class="class"><a href="../classes/JMPC.PetFriends.ProtectorsBundle.Controller.PageController.html">PageController</a></li>
+                                                    <li class="class"><a href="../classes/JMPC.PetFriends.ProtectorsBundle.Controller.ProfileController.html">ProfileController</a></li>
+                                                    <li class="class"><a href="../classes/JMPC.PetFriends.ProtectorsBundle.Controller.RegistrationController.html">RegistrationController</a></li>
+                                                    <li class="class"><a href="../classes/JMPC.PetFriends.ProtectorsBundle.Controller.UserController.html">UserController</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-63890655"></a>
+                                <a href="../namespaces/JMPC.PetFriends.ProtectorsBundle.DependencyInjection.html" style="margin-left: 30px; padding-left: 0">DependencyInjection</a>
+            </div>
+            <div id="namespace-63890655" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/JMPC.PetFriends.ProtectorsBundle.DependencyInjection.Configuration.html">Configuration</a></li>
+                                                    <li class="class"><a href="../classes/JMPC.PetFriends.ProtectorsBundle.DependencyInjection.JMPCPetFriendsProtectorsExtension.html">JMPCPetFriendsProtectorsExtension</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1689555010"></a>
+                                <a href="../namespaces/JMPC.PetFriends.ProtectorsBundle.Entity.html" style="margin-left: 30px; padding-left: 0">Entity</a>
+            </div>
+            <div id="namespace-1689555010" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.Adoption.html">Adoption</a></li>
+                                                    <li class="class"><a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.Animal.html">Animal</a></li>
+                                                    <li class="class"><a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html">AnimalLost</a></li>
+                                                    <li class="class"><a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.Comments.html">Comments</a></li>
+                                                    <li class="class"><a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.Contact.html">Contact</a></li>
+                                                    <li class="class"><a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.Country.html">Country</a></li>
+                                                    <li class="class"><a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.Fotos.html">Fotos</a></li>
+                                                    <li class="class"><a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.Post.html">Post</a></li>
+                                                    <li class="class"><a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.Province.html">Province</a></li>
+                                                    <li class="class"><a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.User.html">User</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-275308086"></a>
+                                <a href="../namespaces/JMPC.PetFriends.ProtectorsBundle.Form.html" style="margin-left: 30px; padding-left: 0">Form</a>
+            </div>
+            <div id="namespace-275308086" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1878836666"></a>
+                                <a href="../namespaces/JMPC.PetFriends.ProtectorsBundle.Form.Type.html" style="margin-left: 30px; padding-left: 0">Type</a>
+            </div>
+            <div id="namespace-1878836666" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/JMPC.PetFriends.ProtectorsBundle.Form.Type.ProfileFormType.html">ProfileFormType</a></li>
+                                                    <li class="class"><a href="../classes/JMPC.PetFriends.ProtectorsBundle.Form.Type.RegistrationFormType.html">RegistrationFormType</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/JMPC.PetFriends.ProtectorsBundle.Form.AnimalType.html">AnimalType</a></li>
+                                                    <li class="class"><a href="../classes/JMPC.PetFriends.ProtectorsBundle.Form.CommentsType.html">CommentsType</a></li>
+                                                    <li class="class"><a href="../classes/JMPC.PetFriends.ProtectorsBundle.Form.ContactType.html">ContactType</a></li>
+                                                    <li class="class"><a href="../classes/JMPC.PetFriends.ProtectorsBundle.Form.LostType.html">LostType</a></li>
+                                                    <li class="class"><a href="../classes/JMPC.PetFriends.ProtectorsBundle.Form.PostType.html">PostType</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1785117203"></a>
+                                <a href="../namespaces/JMPC.PetFriends.ProtectorsBundle.Repository.html" style="margin-left: 30px; padding-left: 0">Repository</a>
+            </div>
+            <div id="namespace-1785117203" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/JMPC.PetFriends.ProtectorsBundle.Repository.CommentRepository.html">CommentRepository</a></li>
+                                                    <li class="class"><a href="../classes/JMPC.PetFriends.ProtectorsBundle.Repository.PostRepository.html">PostRepository</a></li>
+                                                    <li class="class"><a href="../classes/JMPC.PetFriends.ProtectorsBundle.Repository.ProvinceRepository.html">ProvinceRepository</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-524587998"></a>
+                                <a href="../namespaces/JMPC.PetFriends.ProtectorsBundle.Tests.html" style="margin-left: 30px; padding-left: 0">Tests</a>
+            </div>
+            <div id="namespace-524587998" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-327094853"></a>
+                                <a href="../namespaces/JMPC.PetFriends.ProtectorsBundle.Tests.Controller.html" style="margin-left: 30px; padding-left: 0">Controller</a>
+            </div>
+            <div id="namespace-327094853" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/JMPC.PetFriends.ProtectorsBundle.Tests.Controller.DefaultControllerTest.html">DefaultControllerTest</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-498739803"></a>
+                                <a href="../namespaces/JMPC.PetFriends.ProtectorsBundle.Twig.html" style="margin-left: 30px; padding-left: 0">Twig</a>
+            </div>
+            <div id="namespace-498739803" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-449738661"></a>
+                                <a href="../namespaces/JMPC.PetFriends.ProtectorsBundle.Twig.Extensions.html" style="margin-left: 30px; padding-left: 0">Extensions</a>
+            </div>
+            <div id="namespace-449738661" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/JMPC.PetFriends.ProtectorsBundle.Twig.Extensions.JMPCPetFriendsProtectorsExtension.html">JMPCPetFriendsProtectorsExtension</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/JMPC.PetFriends.ProtectorsBundle.JMPCPetFriendsProtectorsBundle.html">JMPCPetFriendsProtectorsBundle</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/SimpleImage.html">SimpleImage</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/JMPC.PetFriends.ProtectorsBundle.Entity.html">\JMPC\PetFriends\ProtectorsBundle\Entity</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\JMPC\PetFriends\ProtectorsBundle\Entity</small>AnimalLost</h1>
+                    <p><em>AnimalLost</em></p>
+                    
+
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html#method___construct" class="">__construct()</a><br />
+                                                                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html#method_getIdanimalperdido" class="">getIdanimalperdido()</a><br />
+                                                                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html#method_setNombre" class="">setNombre()</a><br />
+                                                                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html#method_getNombre" class="">getNombre()</a><br />
+                                                                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html#method_setTipo" class="">setTipo()</a><br />
+                                                                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html#method_getTipo" class="">getTipo()</a><br />
+                                                                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html#method_setRaza" class="">setRaza()</a><br />
+                                                                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html#method_getRaza" class="">getRaza()</a><br />
+                                                                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html#method_setTamano" class="">setTamano()</a><br />
+                                                                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html#method_getTamano" class="">getTamano()</a><br />
+                                                                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html#method_setSexo" class="">setSexo()</a><br />
+                                                                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html#method_getSexo" class="">getSexo()</a><br />
+                                                                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html#method_setColor" class="">setColor()</a><br />
+                                                                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html#method_getColor" class="">getColor()</a><br />
+                                                                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html#method_setComportamiento" class="">setComportamiento()</a><br />
+                                                                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html#method_getComportamiento" class="">getComportamiento()</a><br />
+                                                                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html#method_setMensaje" class="">setMensaje()</a><br />
+                                                                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html#method_getMensaje" class="">getMensaje()</a><br />
+                                                                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html#method_setPais" class="">setPais()</a><br />
+                                                                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html#method_getPais" class="">getPais()</a><br />
+                                                                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html#method_setCiudad" class="">setCiudad()</a><br />
+                                                                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html#method_getCiudad" class="">getCiudad()</a><br />
+                                                                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html#method_setDireccion" class="">setDireccion()</a><br />
+                                                                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html#method_getDireccion" class="">getDireccion()</a><br />
+                                                                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html#method_setFotografia" class="">setFotografia()</a><br />
+                                                                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html#method_getFotografia" class="">getFotografia()</a><br />
+                                                                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html#method_setFechaPerdida" class="">setFechaPerdida()</a><br />
+                                                                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html#method_getFechaPerdida" class="">getFechaPerdida()</a><br />
+                                                                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html#method_setChip" class="">setChip()</a><br />
+                                                                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html#method_getChip" class="">getChip()</a><br />
+                                                                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html#method_setEncontrado" class="">setEncontrado()</a><br />
+                                                                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html#method_getEncontrado" class="">getEncontrado()</a><br />
+                                                                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html#method_setIdusuariomascperd" class="">setIdusuariomascperd()</a><br />
+                                                                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html#method_getIdusuariomascperd" class="">getIdusuariomascperd()</a><br />
+                                                                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html#method_setSlug" class="">setSlug()</a><br />
+                                                                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html#method_getSlug" class="">getSlug()</a><br />
+                                                                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html#method_setFotografiaArchivo" class="">setFotografiaArchivo()</a><br />
+                                                                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html#method_getFotografiaArchivo" class="">getFotografiaArchivo()</a><br />
+                                                                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html#method_slugify" class="">slugify()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No public properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No constants found</em>
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <em>No protected methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html#property_slug" class="">$slug</a><br />
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <em>No private methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html#property_idanimalperdido" class="">$idanimalperdido</a><br />
+                                                                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html#property_nombre" class="">$nombre</a><br />
+                                                                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html#property_tipo" class="">$tipo</a><br />
+                                                                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html#property_raza" class="">$raza</a><br />
+                                                                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html#property_tamano" class="">$tamano</a><br />
+                                                                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html#property_color" class="">$color</a><br />
+                                                                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html#property_sexo" class="">$sexo</a><br />
+                                                                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html#property_comportamiento" class="">$comportamiento</a><br />
+                                                                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html#property_mensaje" class="">$mensaje</a><br />
+                                                                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html#property_pais" class="">$pais</a><br />
+                                                                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html#property_ciudad" class="">$ciudad</a><br />
+                                                                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html#property_direccion" class="">$direccion</a><br />
+                                                                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html#property_fotografia" class="">$fotografia</a><br />
+                                                                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html#property_fechaperdida" class="">$fechaperdida</a><br />
+                                                                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html#property_chip" class="">$chip</a><br />
+                                                                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html#property_encontrado" class="">$encontrado</a><br />
+                                                                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html#property_fotografiaArchivo" class="">$fotografiaArchivo</a><br />
+                                                                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html#property_idusuariomascperd" class="">$idusuariomascperd</a><br />
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html"><div class="path-wrapper">JMPC\PetFriends\ProtectorsBundle\Entity\AnimalLost.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper"></div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                    <div class="namespace-wrapper">\JMPC\PetFriends\ProtectorsBundle\Entity\AnimalLost</div>
+                            </dd>
+
+                        
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr>
+                            <th>
+                                ORM\Table
+                            </th>
+                            <td>
+                                                                    <p>(name="mascotaperdida", indexes={@ORM\Index(name="idUsuarioMascPerd_idx", columns={"idUsuarioMascPerd"})})</p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                ORM\Entity
+                            </th>
+                            <td>
+                                                                    
+                                                            </td>
+                        </tr>
+                                        </table>
+                </aside>
+            </div>
+
+                        
+                                    <a id="properties" name="properties"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Properties</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_slug" name="property_slug" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$slug</h3>
+                <pre class="signature">$slug</pre>
+                <p><em></em></p>
+                
+
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            ORM\Column
+                        </th>
+                        <td>
+                                                            <p>(type="string")</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_idanimalperdido" name="property_idanimalperdido" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$idanimalperdido</h3>
+                <pre class="signature">$idanimalperdido : integer</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                integer
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            ORM\Column
+                        </th>
+                        <td>
+                                                            <p>(name="idAnimalPerdido", type="integer", nullable=false)</p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            ORM\Id
+                        </th>
+                        <td>
+                                                            
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            ORM\GeneratedValue
+                        </th>
+                        <td>
+                                                            <p>(strategy="IDENTITY")</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_nombre" name="property_nombre" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$nombre</h3>
+                <pre class="signature">$nombre : string</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            ORM\Column
+                        </th>
+                        <td>
+                                                            <p>(name="nombre", type="string", length=50, nullable=false)</p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            Assert\NotNull
+                        </th>
+                        <td>
+                                                            <p>(message="*Debe escribir un nombre")</p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            Assert\Length
+                        </th>
+                        <td>
+                                                            <p>(</p>
+<pre><code> min = "4",
+ max = "10",
+ minMessage = "*El nombre debe tener {{ limit }} caracteres minimo",
+ maxMessage = "*El nombre no debe tener mas de {{ limit }} caracteres")</code></pre>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_tipo" name="property_tipo" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$tipo</h3>
+                <pre class="signature">$tipo : string</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            ORM\Column
+                        </th>
+                        <td>
+                                                            <p>(name="tipo", type="string", length=50, nullable=false)</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_raza" name="property_raza" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$raza</h3>
+                <pre class="signature">$raza : string</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            ORM\Column
+                        </th>
+                        <td>
+                                                            <p>(name="raza", type="string", length=50, nullable=false)</p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            Assert\NotNull
+                        </th>
+                        <td>
+                                                            <p>(message="*Debe especificar una raza")</p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            Assert\Length
+                        </th>
+                        <td>
+                                                            <p>(</p>
+<pre><code> min = "5",
+ max = "12",
+ minMessage = "*La raza debe tener {{ limit }} caracteres minimo",
+ maxMessage = "*La raza no debe tener mas de {{ limit }} caracteres")</code></pre>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            Assert\Regex
+                        </th>
+                        <td>
+                                                            <p>(</p>
+<pre><code>pattern="/\d/",
+match=false,
+message="*La raza no puede contener numeros")</code></pre>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_tamano" name="property_tamano" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$tamano</h3>
+                <pre class="signature">$tamano : string</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            ORM\Column
+                        </th>
+                        <td>
+                                                            <p>(name="tamano", type="string", length=50, nullable=false)</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_color" name="property_color" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$color</h3>
+                <pre class="signature">$color : string</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            ORM\Column
+                        </th>
+                        <td>
+                                                            <p>(name="color", type="string", length=50, nullable=false)</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_sexo" name="property_sexo" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$sexo</h3>
+                <pre class="signature">$sexo</pre>
+                <p><em></em></p>
+                
+
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            ORM\Column
+                        </th>
+                        <td>
+                                                            <p>(type="string")</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_comportamiento" name="property_comportamiento" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$comportamiento</h3>
+                <pre class="signature">$comportamiento : string</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            ORM\Column
+                        </th>
+                        <td>
+                                                            <p>(name="comportamiento", type="string", length=50, nullable=false)</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_mensaje" name="property_mensaje" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$mensaje</h3>
+                <pre class="signature">$mensaje : string</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            ORM\Column
+                        </th>
+                        <td>
+                                                            <p>(name="mensaje", type="text", nullable=false)</p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            Assert\NotNull
+                        </th>
+                        <td>
+                                                            <p>(message="*Debe escribir un mensaje")</p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            Assert\Length
+                        </th>
+                        <td>
+                                                            <p>(</p>
+<pre><code> min = "100",
+ max = "300",
+ minMessage = "*El mensaje debe tener {{ limit }} caracteres minimo",
+ maxMessage = "*El mensaje no debe tener mas de {{ limit }} caracteres")</code></pre>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_pais" name="property_pais" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$pais</h3>
+                <pre class="signature">$pais : string</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            ORM\Column
+                        </th>
+                        <td>
+                                                            <p>(name="pais", type="string", length=50, nullable=false)</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_ciudad" name="property_ciudad" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$ciudad</h3>
+                <pre class="signature">$ciudad : string</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            ORM\Column
+                        </th>
+                        <td>
+                                                            <p>(name="ciudad", type="string", length=50, nullable=false)</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_direccion" name="property_direccion" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$direccion</h3>
+                <pre class="signature">$direccion : string</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            ORM\Column
+                        </th>
+                        <td>
+                                                            <p>(name="direccion", type="string", length=50, nullable=false)</p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            Assert\NotNull
+                        </th>
+                        <td>
+                                                            <p>(message="*Debe escribir una dirección")</p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            Assert\Length
+                        </th>
+                        <td>
+                                                            <p>(</p>
+<pre><code> min = "8",
+ max = "25",
+ minMessage = "*La dirección debe tener {{ limit }} caracteres minimo",
+ maxMessage = "*La dirección no debe tener mas de {{ limit }} caracteres")</code></pre>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_fotografia" name="property_fotografia" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$fotografia</h3>
+                <pre class="signature">$fotografia : string</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            ORM\Column
+                        </th>
+                        <td>
+                                                            <p>(name="fotografia", type="string", length=500, nullable=false)</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_fechaperdida" name="property_fechaperdida" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$fechaperdida</h3>
+                <pre class="signature">$fechaperdida : \DateTime</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                \DateTime
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            ORM\Column
+                        </th>
+                        <td>
+                                                            <p>(name="fechaPerdida", type="date", nullable=false)</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_chip" name="property_chip" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$chip</h3>
+                <pre class="signature">$chip : boolean</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                boolean
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            ORM\Column
+                        </th>
+                        <td>
+                                                            <p>(name="chip", type="boolean", nullable=false)</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_encontrado" name="property_encontrado" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$encontrado</h3>
+                <pre class="signature">$encontrado : boolean</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                boolean
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            ORM\Column
+                        </th>
+                        <td>
+                                                            <p>(name="encontrado", type="boolean", nullable=false)</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_fotografiaArchivo" name="property_fotografiaArchivo" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$fotografiaArchivo</h3>
+                <pre class="signature">$fotografiaArchivo</pre>
+                <p><em></em></p>
+                
+
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            Assert\File
+                        </th>
+                        <td>
+                                                            <p>(maxSize="1M", mimeTypes={"image/png", "image/jpeg", "image/pjpeg"})</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_idusuariomascperd" name="property_idusuariomascperd" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$idusuariomascperd</h3>
+                <pre class="signature">$idusuariomascperd : \User</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                \User
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            ORM\ManyToOne
+                        </th>
+                        <td>
+                                                            <p>(targetEntity="User")</p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            ORM\JoinColumn
+                        </th>
+                        <td>
+                                                            <p>(name="idUsuarioMascPerd", referencedColumnName="id")</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                            
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___construct" name="method___construct" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__construct()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__construct()</pre>
+                <p><em></em></p>
+                
+
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getIdanimalperdido" name="method_getIdanimalperdido" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getIdanimalperdido()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getIdanimalperdido() : integer</pre>
+                <p><em>Get idanimalperdido</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setNombre" name="method_setNombre" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setNombre()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setNombre(string <span class="argument">$nombre</span>) : \JMPC\PetFriends\ProtectorsBundle\Entity\AnimalLost</pre>
+                <p><em>Set nombre</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$nombre </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html">\JMPC\PetFriends\ProtectorsBundle\Entity\AnimalLost</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getNombre" name="method_getNombre" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getNombre()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getNombre() : string</pre>
+                <p><em>Get nombre</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setTipo" name="method_setTipo" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setTipo()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setTipo(string <span class="argument">$tipo</span>) : \JMPC\PetFriends\ProtectorsBundle\Entity\AnimalLost</pre>
+                <p><em>Set tipo</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$tipo </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html">\JMPC\PetFriends\ProtectorsBundle\Entity\AnimalLost</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getTipo" name="method_getTipo" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getTipo()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getTipo() : string</pre>
+                <p><em>Get tipo</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setRaza" name="method_setRaza" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setRaza()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setRaza(string <span class="argument">$raza</span>) : \JMPC\PetFriends\ProtectorsBundle\Entity\AnimalLost</pre>
+                <p><em>Set raza</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$raza </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html">\JMPC\PetFriends\ProtectorsBundle\Entity\AnimalLost</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getRaza" name="method_getRaza" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getRaza()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getRaza() : string</pre>
+                <p><em>Get raza</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setTamano" name="method_setTamano" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setTamano()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setTamano(string <span class="argument">$tamano</span>) : \JMPC\PetFriends\ProtectorsBundle\Entity\AnimalLost</pre>
+                <p><em>Set tamano</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$tamano </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html">\JMPC\PetFriends\ProtectorsBundle\Entity\AnimalLost</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getTamano" name="method_getTamano" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getTamano()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getTamano() : string</pre>
+                <p><em>Get tamano</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setSexo" name="method_setSexo" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setSexo()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setSexo(string <span class="argument">$sexo</span>) : \JMPC\PetFriends\ProtectorsBundle\Entity\AnimalLost</pre>
+                <p><em>Set sexo</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$sexo </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html">\JMPC\PetFriends\ProtectorsBundle\Entity\AnimalLost</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getSexo" name="method_getSexo" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getSexo()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getSexo() : string</pre>
+                <p><em>Get sexo</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setColor" name="method_setColor" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setColor()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setColor(string <span class="argument">$color</span>) : \JMPC\PetFriends\ProtectorsBundle\Entity\AnimalLost</pre>
+                <p><em>Set color</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$color </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html">\JMPC\PetFriends\ProtectorsBundle\Entity\AnimalLost</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getColor" name="method_getColor" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getColor()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getColor() : string</pre>
+                <p><em>Get color</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setComportamiento" name="method_setComportamiento" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setComportamiento()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setComportamiento(string <span class="argument">$comportamiento</span>) : \JMPC\PetFriends\ProtectorsBundle\Entity\AnimalLost</pre>
+                <p><em>Set comportamiento</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$comportamiento </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html">\JMPC\PetFriends\ProtectorsBundle\Entity\AnimalLost</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getComportamiento" name="method_getComportamiento" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getComportamiento()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getComportamiento() : string</pre>
+                <p><em>Get comportamiento</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setMensaje" name="method_setMensaje" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setMensaje()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setMensaje(string <span class="argument">$mensaje</span>) : \JMPC\PetFriends\ProtectorsBundle\Entity\AnimalLost</pre>
+                <p><em>Set mensaje</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$mensaje </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html">\JMPC\PetFriends\ProtectorsBundle\Entity\AnimalLost</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getMensaje" name="method_getMensaje" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getMensaje()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getMensaje() : string</pre>
+                <p><em>Get mensaje</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setPais" name="method_setPais" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setPais()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setPais(string <span class="argument">$pais</span>) : \JMPC\PetFriends\ProtectorsBundle\Entity\AnimalLost</pre>
+                <p><em>Set pais</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$pais </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html">\JMPC\PetFriends\ProtectorsBundle\Entity\AnimalLost</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getPais" name="method_getPais" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getPais()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getPais() : string</pre>
+                <p><em>Get pais</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setCiudad" name="method_setCiudad" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setCiudad()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setCiudad(string <span class="argument">$ciudad</span>) : \JMPC\PetFriends\ProtectorsBundle\Entity\AnimalLost</pre>
+                <p><em>Set ciudad</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$ciudad </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html">\JMPC\PetFriends\ProtectorsBundle\Entity\AnimalLost</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getCiudad" name="method_getCiudad" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getCiudad()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getCiudad() : string</pre>
+                <p><em>Get ciudad</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setDireccion" name="method_setDireccion" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setDireccion()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setDireccion(string <span class="argument">$direccion</span>) : \JMPC\PetFriends\ProtectorsBundle\Entity\AnimalLost</pre>
+                <p><em>Set direccion</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$direccion </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html">\JMPC\PetFriends\ProtectorsBundle\Entity\AnimalLost</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getDireccion" name="method_getDireccion" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getDireccion()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getDireccion() : string</pre>
+                <p><em>Get direccion</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setFotografia" name="method_setFotografia" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setFotografia()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setFotografia(string <span class="argument">$fotografia</span>) : \JMPC\PetFriends\ProtectorsBundle\Entity\AnimalLost</pre>
+                <p><em>Set fotografia</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$fotografia </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html">\JMPC\PetFriends\ProtectorsBundle\Entity\AnimalLost</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getFotografia" name="method_getFotografia" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getFotografia()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getFotografia() : string</pre>
+                <p><em>Get fotografia</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setFechaPerdida" name="method_setFechaPerdida" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setFechaPerdida()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setFechaPerdida(\DateTime <span class="argument">$fechaperdida</span>) : \JMPC\PetFriends\ProtectorsBundle\Entity\AnimalLost</pre>
+                <p><em>Set fechaperdida</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>\DateTime</td>
+                                <td>$fechaperdida </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html">\JMPC\PetFriends\ProtectorsBundle\Entity\AnimalLost</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getFechaPerdida" name="method_getFechaPerdida" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getFechaPerdida()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getFechaPerdida() : \DateTime</pre>
+                <p><em>Get fechaperdida</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    \DateTime
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setChip" name="method_setChip" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setChip()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setChip(boolean <span class="argument">$chip</span>) : \JMPC\PetFriends\ProtectorsBundle\Entity\AnimalLost</pre>
+                <p><em>Set chip</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$chip </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html">\JMPC\PetFriends\ProtectorsBundle\Entity\AnimalLost</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getChip" name="method_getChip" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getChip()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getChip() : boolean</pre>
+                <p><em>Get chip</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setEncontrado" name="method_setEncontrado" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setEncontrado()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setEncontrado(boolean <span class="argument">$encontrado</span>) : \JMPC\PetFriends\ProtectorsBundle\Entity\AnimalLost</pre>
+                <p><em>Set encontrado</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$encontrado </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html">\JMPC\PetFriends\ProtectorsBundle\Entity\AnimalLost</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getEncontrado" name="method_getEncontrado" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getEncontrado()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getEncontrado() : boolean</pre>
+                <p><em>Get encontrado</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setIdusuariomascperd" name="method_setIdusuariomascperd" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setIdusuariomascperd()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setIdusuariomascperd(\JMPC\PetFriends\ProtectorsBundle\Entity\User <span class="argument">$idusuariomascperd</span>) : \JMPC\PetFriends\ProtectorsBundle\Entity\AnimalLost</pre>
+                <p><em>Set idusuariomascperd</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.User.html">\JMPC\PetFriends\ProtectorsBundle\Entity\User</a></td>
+                                <td>$idusuariomascperd </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html">\JMPC\PetFriends\ProtectorsBundle\Entity\AnimalLost</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getIdusuariomascperd" name="method_getIdusuariomascperd" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getIdusuariomascperd()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getIdusuariomascperd() : \JMPC\PetFriends\ProtectorsBundle\Entity\User</pre>
+                <p><em>Get idusuariomascperd</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.User.html">\JMPC\PetFriends\ProtectorsBundle\Entity\User</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setSlug" name="method_setSlug" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setSlug()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setSlug(string <span class="argument">$slug</span>) : \JMPC\PetFriends\ProtectorsBundle\Entity\AnimalLost</pre>
+                <p><em>Set slug</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$slug </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/JMPC.PetFriends.ProtectorsBundle.Entity.AnimalLost.html">\JMPC\PetFriends\ProtectorsBundle\Entity\AnimalLost</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getSlug" name="method_getSlug" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getSlug()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getSlug() : string</pre>
+                <p><em>Get slug</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setFotografiaArchivo" name="method_setFotografiaArchivo" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setFotografiaArchivo()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setFotografiaArchivo( <span class="argument">$fotografiaArchivo</span>)</pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$fotografiaArchivo </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getFotografiaArchivo" name="method_getFotografiaArchivo" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getFotografiaArchivo()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getFotografiaArchivo()</pre>
+                <p><em></em></p>
+                
+
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_slugify" name="method_slugify" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">slugify()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">slugify( <span class="argument">$text</span>)</pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$text </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">AnimalLost.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/JMPC\PetFriends\ProtectorsBundle\Entity\AnimalLost.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                            <li><a href="../namespaces/JMPC.html">\JMPC</a></li>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on June 19th, 2014 at 20:18.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,5 @@
+AuthUserFile /www/proyecto/.htpasswd
+AuthType Basic
+AuthName "Restringido"
+require valid-user
+

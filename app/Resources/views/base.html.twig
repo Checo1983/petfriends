@@ -1,0 +1,69 @@
+{# app/Resources/FOSUserBundle/views/base.html.twig #}
+{# Plantilla principal del sitio web PetsFriends #}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>PetsFriends {% block title %}{% endblock %}</title>
+    {% block meta %}{% endblock %}
+    {% block stylesheets %}{% endblock %}
+   
+    {% block javascript %}{% endblock %}
+    </head>
+    <body class="page1">
+        <div class="wrapper">
+<!--============================== header & gallery =================================-->
+       
+        <header>
+            <div class="container_12">
+                <div class="grid_12 prefix_1 suffix_1">
+                {% block login %}{% endblock %}
+                    <h1>
+                        <div class="box_logo">
+                            <a href="{{ path('jmpc_pet_friends_protectors_homepage') }}">    
+                                <img class="logo" src="{{ asset('img/logo.png') }}" alt="Pet Friends">
+                            </a>
+                        </div>
+                    </h1>
+                    {% block menu_block %}{% endblock %}
+                    <div class="clear"></div>
+                </div><!-- End grid_12 prefix_1 suffix_1 -->
+            </div><!-- End container_12 -->
+        </header>
+        {% for type, messages in app.session.flashbag.all() %}
+            {% for message in messages %}
+                <div class="flash-notice">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+        {% block top_block %}{% endblock %}
+        <div class="page1_block">
+            <div class="container_12 prefix_2">
+            {% block section %}{% endblock %}
+            {% block sidebar %}{% endblock %} 
+            </div><!-- End container_12 prefix_2 --> 
+        </div><!-- End page1_block --> 
+<!--========================== content ================================-->
+    {% block content %}{% endblock %}
+        </div><!-- End wrapper -->
+        <div id="bottom_block">
+            <!--<canvas id='canvas'></canvas>--> 
+        </div><!-- End bottom_block -->
+<!--============================== footer =================================-->
+
+        <footer>    
+          <div class="container_12">
+            <div class="grid_12">
+                <div class="socials">
+                    <a href="#"></a>
+                    <a href="#"></a>
+                    <a href="#"></a>
+                    <a href="#"></a>
+                </div>
+                <span class="text_footer">PetsFriends &copy; 2014</span>
+            </div>  
+          </div>
+        </footer>
+    </body>
+</html>

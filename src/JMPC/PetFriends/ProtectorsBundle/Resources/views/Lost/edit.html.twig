@@ -1,0 +1,32 @@
+{# src/JMPC/PetFriends/ProtectorsBundle/Resources/views/Lost/edit.html.twig #}
+{# Plantilla que edita entradas de animales desaparecido publicados en el sitio web #}
+{# Acceso: Administrador / Usuario registrado con idusuario == idanimalperdido #}
+
+{% extends 'JMPCPetFriendsProtectorsBundle::base.html.twig' %}
+
+{% block section %}
+<div class="grid_8 prefix_1">
+    <h2>Editar Animal</h2><br>
+    {% if message %}
+        <div class="errors">{{ message }}</div>
+    {% elseif is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+        <div id="form">
+            {{ form (form) }}
+        </div>
+        <div id="preview_img" title="Vista previa" style="display:none">
+            <img id="img_preview" src="{{ asset ('img/avatar.png') }}" />
+        </div>
+    {% else %} 
+        <div class="not_found"></div>
+    {% endif %}
+    <div class="button_back">
+       <a class="btn02" href="{{ path('jmpc_pet_friends_protectors_lost') }}">Volver</a>
+    </div>
+</div>
+{% endblock %}
+
+{# Renderiza entradas y comentarios recientes en el lateral #}
+{% block sidebar %}
+        {% render (controller("JMPCPetFriendsProtectorsBundle:Animals:lateral")) %}
+        {{ parent() }}
+{% endblock %}

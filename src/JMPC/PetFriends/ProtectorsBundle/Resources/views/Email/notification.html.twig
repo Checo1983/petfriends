@@ -1,0 +1,31 @@
+{# src/JMPC/PetFriends/ProtectorsBundle/Resources/views/Email/notification.html.twig #}
+{# Plantilla de notificación al administrador de una nueva consulta en la sección contacto #}
+
+<!DOCTYPE HTML>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Nuevo mensaje</title>
+    </head>
+    <body>
+        <table>
+            <tbody>
+            <tr>
+                <td>
+                    <p>Nuevo mensaje recibido:</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <ul>
+                        <li><strong>Asunto</strong>:{{ contact.asunto | title }}</li>
+                        <li><strong>Nombre</strong>:{{ contact.nombre }}</li>
+                        <li><strong>Email</strong>: {{ contact.email }}</li>
+                        <li><strong>Message</strong>: {{ contact.mensaje }}</li>
+                    </ul>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

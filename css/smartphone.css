@@ -1,0 +1,73 @@
+/* Smartphones (portrait) ----------- */
+@media only screen
+and (max-width : 480px)
+{
+    .page1
+    {
+        max-width: 480px;
+    }
+
+    .wrapper
+    {
+        max-width: 480px;
+    }
+
+    header
+    {
+        max-width: 480px;
+    }
+
+    .container12
+    {
+        max-width: 480px;
+    }
+
+    .page1_block
+    {
+        max-width: 480px;
+    }
+
+    .blog
+    {
+        max-width: 320px;
+        margin-left: -20px;
+    }
+
+    .grid_5 .prefix_0,
+    .content
+    {
+        display: none;
+    }
+
+    .comments
+    {
+        max-width: 480px;
+    }
+
+    .paginacion
+    {
+        max-width: 480px;
+        margin: 0 -190px;
+    }
+
+    .loading
+    {
+        max-width: 200px;
+    }
+
+    .socials
+    {
+        float: none;
+    }
+
+    .text_footer
+    {
+        margin-left: 20px;
+    }
+
+    #form,
+    form.blogger
+    {
+        width: 320px;
+    }
+}

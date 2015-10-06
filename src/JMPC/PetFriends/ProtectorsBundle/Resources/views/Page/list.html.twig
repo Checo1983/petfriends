@@ -1,0 +1,44 @@
+{# src/JMPC/PetFriends/ProtectorsBundle/Resouces/views/Page/list.html.twig #}
+{# Plantilla que ver entradas individuales en el sitio web y sus comentarios #}
+{# Acceso: Anonimo #}
+
+{% extends 'JMPCPetFriendsProtectorsBundle::base.html.twig' %}
+
+{% block title %}Blog{% if is_granted("ROLE_ADMIN") %} - Administración{% endif %}{% endblock %} 
+
+{% block section %}
+<div class="grid_8 prefix_1">
+    <article class="blog">
+        <header class="ici02">
+            <div class="date"><time datetime="{{ post.creado|date('c') }}">{{ post.creado|date('l, F j, Y') | localizeddate('full', 'none', 'es') | capitalize }}</time></div>
+            <h2 class="ic1">{{ post.titulo }}</h2>
+        </header>
+        <img src="{{ asset(['img/', post.imagen]|join) }}" alt="{{ post.titulo }} imagen no encontrada" class="large" />
+        <div>
+            <p>{{ post.contenido }}</p>
+        </div>
+    </article>
+    <section class="comments" id="comments">
+        <section class="previous-comments">
+            <h3>Comentarios</h3>
+            {% include 'JMPCPetFriendsProtectorsBundle:Comments:index.html.twig' with { 'comments': comments } %}
+        </section>
+        <h3>Nuevo comentario</h3>
+         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %} 
+            {% render (controller ('JMPCPetFriendsProtectorsBundle:Comments:new', { 'post_id': post.id } )) %} 
+         {% else %}
+            <p>Para comentar debe estar registrado</p>
+         {% endif %}
+    </section>
+    <div class="button_back">
+        <a class="btn02" href="{{ path ('jmpc_pet_friends_protectors_homepage') }}">Volver</a>
+    </div>
+</div>
+{% endblock %}
+
+{# Renderiza la parte derecha del sitio web #}
+{% block sidebar %}
+{% render (controller("JMPCPetFriendsProtectorsBundle:Animals:lateral")) %}
+{{ parent() }}
+{% endblock %}
+

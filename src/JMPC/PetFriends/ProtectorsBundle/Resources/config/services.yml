@@ -1,0 +1,20 @@
+parameters:
+    #Set up the email address defaults
+    contact.notification_addresses:     jp.ciphron@gmail.com
+    contact.confirmation_from_address:  jp.ciphron@gmail.com
+    #Set up the email template defaults
+    contact.notification_template:      JMPCPetFriendsProtectorsBundle:Email:notification.html.twig
+    contact.confirmation_template:      JMPCPetFriendsProtectorsBundle:Email:confirmation.html.twig
+
+services:
+    jmpc_pet_friends_protectors.registration.form.type:
+        class: JMPC\PetFriends\ProtectorsBundle\Form\Type\RegistrationFormType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: jmpc_user_registration }
+            
+    jmpc_pet_friends_protectors.profile.form.type:
+        class: JMPC\PetFriends\ProtectorsBundle\Form\Type\ProfileFormType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: jmpc_user_profile }

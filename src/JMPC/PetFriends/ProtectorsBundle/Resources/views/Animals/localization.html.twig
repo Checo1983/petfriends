@@ -1,0 +1,12 @@
+{# src/JMPC/PetFriends/ProtectorsBundle/Resouces/views/Animals/localization.html.twig #}
+{# Plantilla que carga mapa de localización Google Maps #}
+
+<script>
+    $(document).ready(function(){
+        initialize('{{ animal.direccion }}');
+    });
+</script>
+
+<div class="box">
+    <div id="map_canvas"></div>
+</div>

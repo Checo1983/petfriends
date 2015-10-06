@@ -1,0 +1,14 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_driver: pdo_mysql
+    database_host: mysql1.alwaysdata.com 
+    database_port: null
+    database_name: checo1983_pets
+    database_user: checo1983
+    database_password: ciphron
+    mailer_transport: gmail
+    mailer_host: smtp.gmail.com
+    mailer_user: jp.ciphron
+    mailer_password: e4a7109f1
+    locale: es
+    secret: 6055d65e35277026d80d9027695c0ad00b599f2f

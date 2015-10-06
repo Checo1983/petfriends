@@ -1,0 +1,101 @@
+<?php
+
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+namespace JMPC\PetFriends\ProtectorsBundle\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use JMPC\PetFriends\ProtectorsBundle\Entity\User;
+use JMPC\PetFriends\ProtectorsBundle\Entity\Fotos;
+use FOS\UserBundle\Model\UserManagerInterface;
+
+class UserController extends Controller
+{
+
+    public function loginAction()
+    {
+        return $this->render('JMPCPetFriendsProtectorsBundle::index.html.twig', array());
+    }
+
+    public function newAction()
+    {
+        $userManager = $this->container->get('fos_user.user_manager');
+
+        $user = $userManager->createUser();
+        
+        return $this->redirect($this->generateUrl('fos_user_profile_show'));
+    }
+
+    public function updateFileAction()
+    {
+        $idusuario = $this->get('security.context')->getToken()->getUser()->getId();
+        $user = $this->get('security.context')->getToken()->getUser();
+
+        $request = $this->getRequest();
+
+        $em = $this->getDoctrine()->getManager();
+
+        $fotos = $em->getRepository('JMPCPetFriendsProtectorsBundle:Fotos')->findOneByUsuario($idusuario);
+
+        if ( $request->isXmlHttpRequest() ) {
+
+            $fotoUsuario = $request->files->get('profile_photo');
+
+            $nombreRealImagen = $fotoUsuario->getClientOriginalName();
+            
+            $fotos->setFotoUsuario($nombreRealImagen);
+            
+            $em->persist($fotos);
+            $em->flush();
+
+            //Copia el fichero fisicamente al servidor (web/img)
+            $fotoUsuario->move('img/', $nombreRealImagen);
+
+            $response = new Response();
+            $response->setContent($nombreRealImagen);
+            $response->headers->set('Content-Type', 'text/plain');
+
+            return $response;
+        }
+    }
+
+    public function updateFilePetAction()
+    {
+        $idusuario = $this->get('security.context')->getToken()->getUser()->getId();
+        $user = $this->get('security.context')->getToken()->getUser();
+
+        $request = $this->getRequest();
+
+        $em = $this->getDoctrine()->getManager();
+
+        $fotos = $em->getRepository('JMPCPetFriendsProtectorsBundle:Fotos')->findOneByUsuario($idusuario);
+
+        if ( $request->isXmlHttpRequest() ) {
+
+            $fotoMascota = $request->files->get('profile_photo_pet');
+            $nombreRealImagen = $fotoMascota->getClientOriginalName();
+            
+            
+            $fotos->setFotoMascota($nombreRealImagen);
+            
+            $em->persist($fotos);
+            $em->flush();
+
+            //Copia el fichero fisicamente al servidor (web/img)
+            $fotoMascota->move('img/', $nombreRealImagen);
+
+            $response = new Response();
+            $response->setContent($nombreRealImagen);
+            $response->headers->set('Content-Type', 'text/plain');
+
+            return $response;
+        }
+    }
+}
+

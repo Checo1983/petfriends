@@ -1,0 +1,31 @@
+{# src/JMPC/PetFriends/ProtectorsBundle/Resources/views/Email/confirmation.html.twig #}
+{# Plantilla de confirmacion al usuario usada en la sección contacto #}
+
+<!DOCTYPE HTML>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Gracias por contactar</title>
+    </head>
+    <body>
+        <table>
+            <tbody>
+            <tr>
+                <td>
+                    <p>Hola {{ contact.nombre | title }}</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>Gracias por contactar con PetFriends, en breve te enviaremos una respuesta a tu consulta :)</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>Gracias y un saludo.</p>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

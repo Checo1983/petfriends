@@ -1,0 +1,25 @@
+{# src/JMPC/PetFriends/ProtectorsBundle/Resources/views/Page/contact.html.twig #}
+{# Plantilla con formulario para contactar con el administrador del sitio web #}
+{# Acceso: Anonimos #}
+
+{% extends 'JMPCPetFriendsProtectorsBundle::base.html.twig' %}
+
+{% block title %}Contacto{% if is_granted("ROLE_ADMIN") %} - Administración{% endif %}{% endblock %}
+
+{% block section %}
+    <div class="content grid_12 prefix_1">
+        <h2 class="ic4">Contacto</h2>
+       
+        <div id="form">
+            <form action="{{path("jmpc_pet_friends_protectors_contact")}}" method="post">
+                {{ form_widget(form) }}
+                <p>
+                  <button id="form_Enviar" type="submit">Enviar</button>
+                </p>
+            </form>
+        </div>
+    </div>
+    
+{% endblock %}
+
+{% block sidebar %}{% endblock %}

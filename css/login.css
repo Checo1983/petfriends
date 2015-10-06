@@ -1,0 +1,232 @@
+
+/**********************************************************/
+/*              Hoja de estilos Login.css                 */
+/*          Estiliza el formulario de ingreso             */
+/*              del sitio web PetsFriends                 */
+/*                                                        */
+/**********************************************************/
+
+.content_icon .login_icon
+{
+    display: inline-block;
+    float: right;
+
+    width: 32px;
+    height: 32px;
+    margin-right: 10px;
+
+    vertical-align: middle;
+
+    border-radius: 5px;
+    background: url('../img/sprite_icons.jpg') no-repeat;
+    background-position: -15px -131px;
+}
+
+#login
+{
+    line-height: 30px;
+
+    display: inline-block !important;
+    float: right;
+}
+
+#login_container
+{
+    float: right;
+
+    width: 300px;
+    padding-top: 40px;
+}
+
+#loginContainer
+{
+    font-size: 12px;
+
+    float: right;
+}
+
+#loginButton
+{
+    position: relative;
+    z-index: 30;
+
+    display: inline-block;
+
+    margin-left: 10px;
+
+    cursor: pointer;
+
+    border: 1px solid #f98d0d;
+    -moz-border-radius: 3px;
+         border-radius: 3px;
+    background: #c9e54e url(../img/buttonbg.png) repeat-x;
+}
+
+#loginButton span
+{
+    font-weight: bold;
+
+    display: block;
+
+    padding: 7px 25px 9px 8px;
+
+    color: #445058;
+    background: url(../img/loginArrow.png) no-repeat 53px 7px;
+    text-shadow: 1px 1px #fff;
+}
+
+#loginButton:hover
+{
+    background: #e4f792 url(../img/buttonbgHover.png) repeat-x;
+}
+
+#loginBox
+{
+    position: absolute;
+    z-index: 1000;
+    right: 20px;
+
+    display: none;
+}
+
+#loginButton.active
+{
+    border-radius: 3px 3px 0 0;
+}
+
+#loginButton.active span
+{
+    background-position: 53px -76px;
+}
+
+#loginButton.active em
+{
+    position: absolute;
+    bottom: -1px;
+
+    width: 100%;
+    height: 1px;
+
+    background: #d2e0ea;
+}
+
+#loginForm
+{
+    width: 248px;
+    padding: 6px;
+
+    border: 1px solid #f98d0d;
+    -moz-border-radius: 3px 0 3px 3px;
+         border-radius: 3px 0 3px 3px;
+    background: #c9e54e;
+}
+
+#loginForm fieldset
+{
+    display: block;
+
+    margin: 0 0 12px 0;
+    padding: 0;
+
+    border: 0;
+}
+
+fieldset#body
+{
+    margin: 0;
+    padding: 10px 13px;
+
+    -moz-border-radius: 3px;
+         border-radius: 3px;
+    background: #fff;
+}
+
+#loginForm #checkbox
+{
+    float: left;
+
+    width: auto;
+    margin: 10px 9px 10px 10px;
+    padding: 0;
+
+    border: 0;
+}
+
+#body label
+{
+    display: block;
+    float: left;
+
+    margin: 9px 0 0 0;
+
+    color: #3a454d;
+}
+
+#loginForm #body fieldset label
+{
+    display: block;
+    float: none;
+
+    margin: 0 0 6px 0;
+}
+
+#loginForm input
+{
+    font-size: 12px;
+    font-weight: bold;
+
+    width: 92%;
+    padding: 8px 8px;
+
+    color: #3a454d;
+    border: 1px solid #f98d0d;
+    -moz-border-radius: 3px;
+         border-radius: 3px;
+    -webkit-box-shadow: inset 0 1px 3px #bbb;
+       -moz-box-shadow: inset 0 1px 3px #bbb;
+            box-shadow: inset 0 1px 3px #bbb;
+}
+
+#loginForm #login
+{
+    float: left;
+
+    width: auto;
+    margin: 0 12px 0 0;
+    padding: 7px 10px 8px 10px;
+
+    color: #fff;
+    border: 1px solid #339cdf;
+    background: #c9e54e url(../img/loginbuttonbg.png) repeat-x;
+    -webkit-box-shadow: none;
+       -moz-box-shadow: none;
+            box-shadow: none;
+    text-shadow: 0 -1px #278db8;
+}
+
+#loginForm span
+{
+    display: block;
+
+    padding: 7px 0 4px 0;
+
+    text-align: center;
+}
+
+#loginForm span a
+{
+    font-size: 12px;
+
+    color: #3a454d;
+    text-shadow: 1px 1px #fff;
+}
+
+input:focus
+{
+    outline: none;
+}
+
+.errors
+{
+    color: red;
+}

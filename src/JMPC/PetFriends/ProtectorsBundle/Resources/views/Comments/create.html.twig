@@ -1,0 +1,11 @@
+{# src/JMPC/PetFriends/ProtectorsBundle/Resources/views/Comments/create.html.twig #}
+{# Plantilla que renderiza el formulario de comentarios del blog en el sitio web #}
+{# Acceso: Usuario registrado #}
+
+{% extends 'JMPCPetFriendsProtectorsBundle::base.html.twig' %}
+
+{% block section %}
+    <h1>Nuevo comentario para el articulo "{{ comment.contenido.titulo }}"</h1>
+    {% include 'JMPCPetFriendsProtectorsBundle:Comments:form.html.twig' with { 'form': form } %} 
+{% endblock %}
+

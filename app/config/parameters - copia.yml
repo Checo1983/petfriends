@@ -1,0 +1,14 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_driver: pdo_mysql
+    database_host: sql110.260mb.net
+    database_port: null
+    database_name: n260m_14384591_petsfriends
+    database_user: n260m_14384591
+    database_password: Josechec
+    mailer_transport: gmail
+    mailer_host: smtp.gmail.com
+    mailer_user: jp.ciphron
+    mailer_password: e4a7109f
+    locale: es
+    secret: 6055d65e35277026d80d9027695c0ad00b599f2f

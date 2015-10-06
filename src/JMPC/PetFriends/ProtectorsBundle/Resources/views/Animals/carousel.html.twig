@@ -1,0 +1,51 @@
+{# src/JMPC/PetFriends/ProtectorsBundle/Resources/views/Animals/carousel.html.twig #}      
+ {# Crea un carrusel de imagenes inferior con los animales del sitio web #}
+ {# Si hay menos de 3 animales en la BBDD se renderiza un carrusel generico para cubrir el hueco #}
+
+<ul class="carousel1">
+  {% if animals | length >= 3 %}
+  {% for animal in animals %}
+        <li class="grid_4">
+        <img src="{{ asset(['img/carousel_', animal.fotografia]|join) }}" alt="{{ animal.nombre }} imagen no encontrada" class="img_inner fleft">
+            <div class="extra_wrapper pad1">
+                    <p class="col2"><a href="{{ path('jmpc_pet_friends_protectors_animals_view', { 'id': animal.idanimal, 'slug': animal.slug }) }}">{{ animal.nombre }}</a></p>
+                        {{ animal.tipo | capitalize }}<br>
+                        {{ animal.raza | capitalize }}<br>
+                        {{ animal.sexo | capitalize }}
+            </div>
+        </li>
+    {% endfor %}
+    {% else %}
+        <li class="grid_4">
+                <img src="{{ asset('img/carousel1_img2.jpg') }}" alt="" class="img_inner fleft">
+                <div class="extra_wrapper pad1">
+                        <p class="col2"><a href="#">Aeraesent quis hoj rcieget diam iverral.</a></p>Loaesent quis orci diam viverralopr con equat. Lusce sagittis quam ihui hyhy opir pulvinarhjk velit.
+                </div>
+        </li>
+        <li class="grid_4">
+                <img src="{{ asset('img/carousel1_img3.jpg') }}" alt="" class="img_inner fleft">
+                <div class="extra_wrapper pad1">
+                        <p class="col2"><a href="#">Tyeraesent quis hojo rcieget iam iverralji.</a></p>Eroaesent quis orci ediam viverralopr con jikjulo poiu retyulo hyk equat. Usce sagittis ki quam ihui hyhy opirp. 
+                </div>
+        </li>
+        <li class="grid_4">
+                <img src="{{ asset('img/carousel1_img4.jpg') }}" alt="" class="img_inner fleft">
+                <div class="extra_wrapper pad1">
+                        <p class="col2"><a href="#">Aeraesent quis hoj rcieget diam iverral.</a></p>Loaesent quis orci diam viverralopr con equat. Lusce sagittis quam ihui hyhy opir pulvinarhjk velit.
+                </div>
+        </li>
+        <li class="grid_4">
+                <img src="{{ asset('img/carousel1_img5.jpg') }}" alt="" class="img_inner fleft">
+                <div class="extra_wrapper pad1">
+                        <p class="col2"><a href="#">Aeraesent quis hoj rcieget diam iverral.</a></p>Loaesent quis orci diam viverralopr con equat. Lusce sagittis quam ihui hyhy opir pulvinarhjk velit.
+                </div>
+        </li>
+        <li class="grid_4">
+                <img src="{{ asset('img/carousel1_img6.jpg') }}" alt="" class="img_inner fleft">
+                <div class="extra_wrapper pad1">
+                        <p class="col2"><a href="#">Aeraesent quis hoj rcieget diam iverral.</a></p>Loaesent quis orci diam viverralopr con equat. Lusce sagittis quam ihui hyhy opir pulvinarhjk velit.
+                </div>
+        </li>
+    {% endif %}
+</ul> <!-- End carousel1 -->
+

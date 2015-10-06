@@ -1,0 +1,116 @@
+{# app/Resources/FOSUserBundle/views/Profile/show_content.html.twig #}
+{# Plantilla sobreescrita FOSUserBundle para perfil de usuario #}
+
+{% extends 'JMPCPetFriendsProtectorsBundle::base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
+
+{% endblock %}
+{% block top_block %}{% endblock%}
+{% block content %}{% endblock%}
+{% block sidebar %}{% endblock%}
+
+{% block section %}
+
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+    initialize('{{ user.nombreCiudad }}');
+});
+
+</script>
+
+
+{% trans_default_domain 'FOSUserBundle' %}
+  <div id="w">
+    <div id="content" class="clearfix">
+      <div id="userphoto">
+      {% for file in files %}
+          <img class="img_profile" src="{{ asset(['img/', file.fotoUsuario]|join) }}" alt="foto de usuario">
+      {% else %}
+          <img class="img_profile" src="{{ asset('img/avatar.png') }}" alt="foto de usuario">
+      {% endfor %}
+      </div>
+
+      <h1 class="profile">{{ user.nombre }}</h1>
+
+      <nav id="profiletabs">
+          <ul class="clearfix">
+              <li><a href="#locale" class="sel">Localización</a></li>
+              <li><a href="#bio">Acerca de vosotros</a></li>
+              <li><a href="#pet">Tu Mascota</a></li>
+              <li><a href="#settings">Tus Datos</a></li>
+          </ul>
+      </nav>
+
+      <section id="locale">
+          <p><b>Pais: </b>{{ user.nombrePais }}</p><p><b>Ciudad: </b>{{ user.nombreCiudad }}</p>
+          <div class="box_form_photo">
+              <form class="form_photo_profile" method="POST" action="{{ path('jmpc_pet_friends_update_files') }}" 
+              enctype="multipart/form-data" name="form_photo_profile">
+                  <input type="file" id="profile_photo" name="profile_photo"/>
+                  <input id="submit_profile_photo" type="submit" value="Cambiar foto" /> 
+              </form>
+          </div>
+          <div class="box_profile">
+              <div id="map_canvas"></div>
+          </div>
+      </section>
+      
+      <section id="bio" class="hidden">
+          <p><b>Sobre vosotros</b></p><p>{{ user.sobreVosotros }}</p>
+      </section>
+      
+      <section id="pet" class="hidden">
+          <div id="petphoto">
+          {% for file in files %}
+              <img class="img_pet" src="{{ asset(['img/', file.fotoMascota]|join) }}" alt="foto de tu mascota">
+          {% else %}
+              <img class="img_pet" src="{{ asset('img/avatar.png') }}" alt="foto de tu mascota">
+          {% endfor %}
+          </div>
+          <p><b>Nombre: </b>{{ user.nombreMascota }}</p>
+          <p><b>Especie: </b>{{ user.especie | capitalize }}</p>
+          <div class="box_form_photo_pet">
+              <form class="form_photo_profile_pet" method="POST" action="{{ path('jmpc_pet_friends_update_files_pet') }}" 
+              enctype="multipart/form-data" name="form_photo_profile_pet">
+                  <input type="file" id="profile_photo_pet" name="profile_photo_pet"/>
+                  <input id="submit_profile_photo_pet" type="submit" value="Cambiar foto" /> 
+              </form>
+          </div>
+      </section>
+
+      <section id="settings" class="hidden">
+          <span>Editar tu perfil </span><span><img class="img_edit" src="{{ asset('img/edit.png')}}" alt="*Edit*"></span>
+
+          <p class="setting"><span>Usuario</span> {{ user.username }}</p>
+
+          <p class="setting"><span>Direccion E-mail</span> {{ user.email }}</p>
+
+          <p class="setting"><span>Nombre de tu mascota</span>{{ user.nombreMascota }}</p>
+
+          <p class="setting"><span>Especie</span>{{ user.especie | capitalize }}</p>
+
+          <p class="setting"><span>Pais</span>{{ user.nombrePais }}</p>
+
+          <p class="setting"><span>Ciudad</span>{{ user.nombreCiudad }}</p>
+
+          <p class="setting"><span>Ultima vez online</span>
+            {{ user.lastLogin | date('l, F j, Y') | localizeddate('full', 'none', 'es') | capitalize }}</p>
+      </section>
+      
+    </div><!-- @end #content -->
+  </div><!-- @end #w -->
+      <div id="dialogoPerfil" title="Modificar Datos de Usuario" style="display:none;">
+          <form id="form_register" action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_edit">
+          {{ form_widget(form) }}
+            <div>
+                <input class="boton" type="submit" value="Modificar" />
+            </div>
+          </form> 
+      </div>
+
+{% endblock %}

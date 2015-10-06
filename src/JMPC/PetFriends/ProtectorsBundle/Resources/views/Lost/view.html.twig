@@ -1,0 +1,85 @@
+{# src/JMPC/PetFriends/ProtectorsBundle/Resouces/views/Animals/view.html.twig #}
+{# Plantilla que ver entradas individuales de animales desaparecidos publicados #}
+{# en el sitio web. Incluye formulario básico de contacto #}
+{# Acceso: Anonimo #}
+
+{% extends 'JMPCPetFriendsProtectorsBundle::base.html.twig' %}
+
+{% block title %}Mascotas desaparecidas{% endblock %} 
+
+{% block sidebar %}{% endblock %}
+
+{% block section %}
+<div class="grid_12 prefix_1">
+    <article class="blog">
+        <header class="ici02">
+            <div class="date"><time datetime="{{ lost.fechaperdida|date('c') }}">{{ lost.fechaperdida|date('l, F j, Y') | localizeddate('full', 'none', 'es') | capitalize }}</time></div>
+            <h2 class="ic1">{{ lost.nombre }}</h2>
+        </header>
+        
+        <div class="adopt_content">
+            <img src="{{ asset(['img/', lost.fotografia]|join) }}" alt="Imagen de {{ lost.nombre }} no encontrada" class="large" />
+        </div>
+        <div id="fieldset_content">
+            <fieldset><legend>Ficha de {{ lost.nombre }}</legend>
+                <div id="animal_token">
+                    <div><span class="title_span">Raza:</span>
+                    <span>{{ lost.tipo | capitalize }} 
+                    {{ lost.raza }}</span>
+                    </div>
+                    <div><span class="title_span">Sexo:</span>
+                        <span>{{ lost.sexo | capitalize }}</span>
+                    </div>
+                    <div><span class="title_span">Tamaño:</span>
+                        <span>{{ lost.tamano | capitalize }}</span>
+                    </div>
+                    <div class="clear"></div>
+                    <div><span class="title_span">Color:</span>
+                        <span class="color_span" style="background:{{ lost.color }}">Color</span>
+                    </div>
+                    <div><span class="title_span">Comportamiento:</span>
+                        <span>{{ lost.comportamiento | capitalize }}</span>
+                    </div>
+                    <div><span class="title_span">Chip:</span>
+                        {% if lost.chip == 1 %}
+                        <span>Si</span>
+                        {% else %}
+                        <span>No</span>
+                        {% endif %}
+                    </div>
+                    <div><span class="title_span">Usuario:</span>
+                        <span><a href="#">{{ lost.idusuariomascperd | capitalize }}</a></span>
+                    </div>
+                    <div class="clear"></div>
+                    <div><span class="title_span">Mensaje:</span>
+                        <span class="title_span_textarea">{{ lost.mensaje }}</span>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    
+        <div class="google_maps" id="localization">
+            <div class="previous-comments">
+                <h3>Localización</h3>
+                {% include 'JMPCPetFriendsProtectorsBundle:Lost:localization.html.twig' %}
+            </div>
+            
+        </div>
+        </article>
+        <div class="adopte_content">
+            <h3>Formulario Mascota Encontrada</h3>
+        
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %} 
+                {% include 'JMPCPetFriendsProtectorsBundle:Lost:form.html.twig' with { 'form': form } %} 
+            {% else %}
+                <div><p>Registrate para poder rellenar el formulario</p></div>
+            {% endif %}
+        </div>
+    
+    <div class="clear"></div>
+    <div class="button_back">
+        <a class="btn02" href="{{ path('jmpc_pet_friends_protectors_lost') }}">Volver</a>
+    </div>
+</div>
+{% endblock %}
+

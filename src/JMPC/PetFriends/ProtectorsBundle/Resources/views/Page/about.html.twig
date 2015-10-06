@@ -1,0 +1,24 @@
+{# src/JMPC/PetFriends/ProtectorsBundle/Resources/views/Page/about.html.twig #}
+{# Plantilla estática con información sobre el sitio web #}
+{# Acceso: Anonimos #}
+
+{% extends 'JMPCPetFriendsProtectorsBundle::base.html.twig' %}
+
+{% block title %}Sobre adopciones{% if is_granted("ROLE_ADMIN") %} - Administración{% endif %}{% endblock %}
+
+{% block section %}
+    <div class="grid_8 prefix_1">
+    <h2>Sobre nosotros</h2><br>
+    <img src="{{ asset('img/logo.png') }}" width="250" alt="about us" class="img_inner fleft">
+    <article class="about">
+        <p>Los requisitos para poder adoptar algún animal de la sociedad protectora son los siguientes:</p>
+        <p>Debe estar correctamente registrado y logueado en <span class="pe">P</span>ets<span class="f">F</span>riends. Para ello puede rellenar el formulario de registro 
+        <a class="register_button" href="#">haciendo click aquí</a> o en la zona superior en 'Acceso'</p>
+        <p>Un vez registrado y logueado en nuestro sistema, los animales de la protectora se encuentran en la sección <a href="{{ path('jmpc_pet_friends_protectors_animals_list') }}"> Nuestros amigos</a></p>
+        <p>Navegue a través del listado para conocer a cada uno de los animales, y poder ver sus fichas particulares</p>
+        <p>Una vez que encuentre a su futura mascota, en su ficha completa, aparecerá un boton denominado 'Adoptame'. Haciendo click en el botón, el sistema enviará una petición automática de adopción en su nombre al administrador de la sociedad y en el menor tiempo posible, tras evaluar la petición, se pondran en contacto con usted via email para iniciar los tramites de adopción.</p>
+        <p>Para cualquier consulta acerca de la asociación, obtener más información acerca de los animales que aparecen en <span class="pe">P</span>et<span class="f">F</span>riends, u obtener ayuda de cualquier tipo no dude en ponerse en contacto con nosotros a traves del formulario de <a href="{{ path('jmpc_pet_friends_protectors_contact') }}">contacto</a><p>
+        <p>La dirección de <span class="pe">P</span>ets<span class="f">F</span>riends</p>
+    </article>
+    </div>
+{% endblock %}

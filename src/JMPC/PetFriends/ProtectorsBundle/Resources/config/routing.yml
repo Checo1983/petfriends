@@ -1,0 +1,154 @@
+jmpc_pet_friends_protectors_homepage:
+    pattern:  /
+    defaults: { _controller: JMPCPetFriendsProtectorsBundle:Page:index }
+
+jmpc_pet_friends_protectors_new:
+    pattern:  /nuevo
+    defaults: { _controller: JMPCPetFriendsProtectorsBundle:Page:new }
+
+jmpc_pet_friends_protectors_delete:
+    pattern:  /borrar/{id}/{slug}
+    defaults: { _controller: JMPCPetFriendsProtectorsBundle:Page:delete }
+    requirements:
+        id: \d+
+
+jmpc_pet_friends_protectors_edit:
+    pattern:  /editar/{id}/{slug}
+    defaults: { _controller: JMPCPetFriendsProtectorsBundle:Page:edit }
+    requirements:
+        id: \d+
+    
+jmpc_pet_friends_protectors_about:
+    pattern:  /sobre
+    defaults: { _controller: JMPCPetFriendsProtectorsBundle:Page:about }
+    
+jmpc_pet_friends_protectors_contact:
+    pattern:  /contacto
+    defaults: { _controller: JMPCPetFriendsProtectorsBundle:Page:contact }
+    
+jmpc_pet_friends_protectors_adopteds:
+    pattern:  /adoptados
+    defaults: { _controller: JMPCPetFriendsProtectorsBundle:Animals:adopted }
+    
+jmpc_pet_friends_protectors_list:
+    pattern:  /{id}/{slug}
+    defaults: { _controller: JMPCPetFriendsProtectorsBundle:Page:list }
+    requirements:
+        _method:  GET
+        id: \d+
+        
+jmpc_pet_friends_protectors_comment_create:
+    pattern:  /comentario/{post_id}
+    defaults: { _controller: JMPCPetFriendsProtectorsBundle:Comments:create }
+    requirements:
+        _method:  POST
+        post_id: \d+
+       
+jmpc_pet_friends_protectors_animals_new:
+    pattern:  /animales/nuevo
+    defaults: { _controller: JMPCPetFriendsProtectorsBundle:Animals:new }
+    
+jmpc_pet_friends_protectors_animals_delete:
+    pattern:  /animales/borrar/{id}/{slug}
+    defaults: { _controller: JMPCPetFriendsProtectorsBundle:Animals:delete }
+    requirements:
+        id: \d+
+
+jmpc_pet_friends_protectors_animals_edit:
+    pattern:  /animales/editar/{id}/{slug}
+    defaults: { _controller: JMPCPetFriendsProtectorsBundle:Animals:edit }
+    requirements:
+        id: \d+
+        
+jmpc_pet_friends_protectors_animals_list:
+    pattern:  /animales/{tipo}
+    defaults: { _controller: JMPCPetFriendsProtectorsBundle:Animals:list, tipo: 'listado' }
+    
+jmpc_pet_friends_protectors_animals_dogs:
+    pattern:  /animales/perros
+    defaults: { _controller: JMPCPetFriendsProtectorsBundle:Animals:list }
+    
+jmpc_pet_friends_protectors_animals_cats:
+    pattern:  /animales/gatos
+    defaults: { _controller: JMPCPetFriendsProtectorsBundle:Animals:list }
+    
+jmpc_pet_friends_protectors_animals_birds:
+    pattern:  /animales/aves
+    defaults: { _controller: JMPCPetFriendsProtectorsBundle:Animals:list }
+    
+jmpc_pet_friends_protectors_animals_others:
+    pattern:  /animales/otros
+    defaults: { _controller: JMPCPetFriendsProtectorsBundle:Animals:list }
+
+jmpc_pet_friends_protectors_animals_view:
+    pattern:  /animales/{id}/{slug}
+    defaults: { _controller: JMPCPetFriendsProtectorsBundle:Animals:view }
+    requirements:
+        _method:  GET
+        id: \d+
+    
+jmpc_pet_friends_protectors_lost:
+    pattern:  /mascotas_perdidas/
+    defaults: { _controller: JMPCPetFriendsProtectorsBundle:Lost:list }
+    
+jmpc_pet_friends_protectors_lost_new:
+    pattern:  /mascotas_perdidas/nuevo
+    defaults: { _controller: JMPCPetFriendsProtectorsBundle:Lost:new }
+    
+jmpc_pet_friends_protectors_lost_delete:
+    pattern:  /mascotas_perdidas/borrar/{id}/{slug}
+    defaults: { _controller: JMPCPetFriendsProtectorsBundle:Lost:delete }
+    requirements:
+        id: \d+
+
+jmpc_pet_friends_protectors_lost_edit:
+    pattern:  /mascotas_perdidas/editar/{id}/{slug}
+    defaults: { _controller: JMPCPetFriendsProtectorsBundle:Lost:edit }
+    requirements:
+        id: \d+
+
+jmpc_pet_friends_protectors_lost_view:
+    pattern:  /mascotas_perdidas/{id}/{slug}
+    defaults: { _controller: JMPCPetFriendsProtectorsBundle:Lost:view }
+    requirements:
+        id: \d+
+        
+jmpc_pet_friends_user:
+    pattern:  /login
+    defaults: { _controller: JMPCPetFriendsProtectorsBundle:Page:index }
+    
+jmpc_pet_friends_new_user:
+    pattern:  /register
+    defaults: { _controller: JMPCPetFriendsProtectorsBundle:Page:index }
+
+jmpc_pet_friends_validate:
+    pattern:  /validate
+    defaults: { _controller: JMPCPetFriendsProtectorsBundle:Page:validate }
+
+jmpc_pet_friends_validate_email:
+    pattern:  /validate_email
+    defaults: { _controller: JMPCPetFriendsProtectorsBundle:Page:validateEmail }
+
+jmpc_pet_friends_update_files:
+    pattern:  /profile/update
+    defaults: { _controller: JMPCPetFriendsProtectorsBundle:User:updateFile }
+
+jmpc_pet_friends_update_files_pet:
+    pattern:  /profile/update_pet
+    defaults: { _controller: JMPCPetFriendsProtectorsBundle:User:updateFilePet }
+
+jmpc_pet_friends_404:
+    pattern:  /error
+    defaults: { _controller: JMPCPetFriendsProtectorsBundle:Page:error }
+
+jmpc_pet_friends_protectors_admin: 
+    pattern:  /admin
+    defaults: { _controller: JMPCPetFriendsProtectorsBundle:Admin:admin }
+
+jmpc_pet_friends_protectors_admin_users: 
+    pattern:  /admin/users
+    defaults: { _controller: JMPCPetFriendsProtectorsBundle:Admin:users }
+
+jmpc_pet_friends_protectors_admin_messages: 
+    pattern:  /admin/messages
+    defaults: { _controller: JMPCPetFriendsProtectorsBundle:Admin:messages }

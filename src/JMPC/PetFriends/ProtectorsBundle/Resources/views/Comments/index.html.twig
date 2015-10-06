@@ -1,0 +1,18 @@
+{# src/JMPC/PetFriends/ProtectorsBundle/Resources/views/Comments/index.html.twig #}
+{# Plantilla que muestra comentarios de cada entrada del blog en el sitio web #}
+
+<div>
+    {% for comment in comments %}
+        <article class="comment {{ cycle(['odd', 'even'], loop.index0) }}" id="comment-{{ comment.id }}">
+            <header class="ici02">
+                <p><span class="highlight">{{ comment.usuario }}</span> ha comentado hace <time datetime="{{ comment.creado|date('c') }}">{{ comment.creado|created_ago|replace({"minutes ago":"minutos"}) }}</time></p>
+            </header>
+            <p>{{ comment.comentarios }}</p>
+        </article>
+    {% else %}
+        <p>No hay comentarios en esta entrada, Escribe tu comentario...</p>
+    {% endfor %}
+    <div class="paginacion">
+        {{ knp_pagination_render(comments) }}
+    </div>
+</div>

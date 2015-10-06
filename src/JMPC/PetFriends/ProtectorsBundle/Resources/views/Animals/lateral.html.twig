@@ -1,0 +1,27 @@
+{# src/JMPC/PetFriends/ProtectorsBundle/Resources/views/Animal/lateral.html.twig #}
+{# Plantilla que muestra las entradas recientes del sitio web en el lateral #}
+
+
+<div class="grid_5 prefix_0">
+    <h2 class="ic1">Entradas recientes</h2>
+    <ul class="list">
+        {% for post in latestPosts %}
+            <li>
+                <span class="{{ cycle(['', 'cnt'], loop.index0) }}"><time datetime="">{{ post.creado|date('d')  }}<span>{{ post.creado|date('F') }}</span></time></span>
+                <div class="extra_wrapper">
+                    <div class="col1">
+                        <span class="highlight">{{ post.autor | capitalize }}</span> ha escrito
+                        <a href="{{ path('jmpc_pet_friends_protectors_list', 
+                                { 'id': post.id, 'slug': post.slug }) }}">
+                          {{ post.titulo }}
+                        </a>{{ post.creado | created_ago }}
+                    </div>
+                </div>
+                <p>{{ post.contenido(100) }}...</p>
+            </li>
+        {% else %}
+            <p>No hay entradas recientes</p>
+        {% endfor %}
+    </ul>
+</div>
+

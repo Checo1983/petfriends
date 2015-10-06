@@ -1,0 +1,37 @@
+{# src/JMPC/PetFriends/ProtectorsBundle/Resources/views/Page/lateral.html.twig #}
+{# Plantilla que muestra los ultimos comentarios del sitio web en el lateral #}
+{# y las etiquetas mas usadas en el blog #}
+
+<div class="grid_5 prefix_0">
+    <h2 class="ic3">Comentarios recientes</h2>
+    <ul class="list">
+    {% for comentario in latestComments %}
+        <li>
+            <span class="{{ cycle(['', 'cnt'], loop.index0) }}"><time datetime="">{{ comentario.creado|date('d') }}<span>{{ comentario.creado|date('F') }}</span></time></span>
+            <div class="extra_wrapper">
+                <div class="col1">
+                    <span class="highlight">{{ comentario.usuario | capitalize }}</span> ha comentado en
+                    <a href="{{ path('jmpc_pet_friends_protectors_list', { 'id': comentario.contenido.id, 'slug': comentario.contenido.slug }) }}#comentario-{{ comentario.id }}">
+                      {{ comentario.contenido.titulo }}
+                    </a>{{ comentario.creado | created_ago }}
+                </div>
+                <p>{{ comentario.comentarios(50) }}</p>
+            </div>
+            
+        </li>
+    {% else %}
+        <p>No hay comentarios recientes</p>
+    {% endfor %}
+    </ul>
+    <section class="sidebar">
+        <h3>Etiquetas mas usadas</h3>
+        <p class="tags">
+            {% for tag, weight in tags %}
+                <span class="weight-{{ weight }}">{{ tag }}</span>
+            {% else %}
+                <p>No hay etiquetas</p>
+            {% endfor %}
+        </p>
+    </section>
+</div>
+

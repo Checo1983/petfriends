@@ -1,0 +1,90 @@
+{# app/Resources/FOSUserBundle/views/Profile/edit_content.html.twig #}
+{# Plantilla sobreescrita FOSUserBundle para editar el perfil de usuario #}
+
+{% extends 'JMPCPetFriendsProtectorsBundle::base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
+
+{% endblock %}
+{% block top_block %}{% endblock%}
+{% block content %}{% endblock%}
+{% block sidebar %}{% endblock%}
+
+{% block section %}
+{% trans_default_domain 'FOSUserBundle' %}
+
+  <div id="w">
+    <div id="content" class="clearfix">
+      <div id="userphoto"><img src="{{ asset('img/avatar.png') }}" alt="default avatar"></div>
+      <h1 class="profile">{{ user.nombre }}</h1>
+
+      <nav id="profiletabs">
+        <ul class="clearfix">
+          <li><a href="#locale" class="sel">Localización</a></li>
+          <li><a href="#bio">Acerca de ti</a></li>
+          <li><a href="#pet">Tu Mascota</a></li>
+          <li><a href="#settings">Tus Datos</a></li>
+        </ul>
+      </nav>
+
+      <section id="locale">
+            <p>{{ user.nombrePais }} {{ user.nombreCiudad }}</p>
+
+            <div class="box_profile">
+                <div id="map_canvas"></div>
+
+            </div>
+      </section>
+      
+      <section id="bio" class="hidden">
+            <p>{{ user.sobreVosotros }}</p>
+      </section>
+      
+      <section id="pet" class="hidden">
+            <p>{{ user.nombreMascota }}</p>
+            <p>{{ user.especie | capitalize }}</p>
+      </section>
+      
+      <section id="settings" class="hidden">
+            <span>Editar tu perfil </span><span><img class="img_edit" src="{{ asset('img/edit.png')}}" alt="*Edit*"></span>
+
+            <p class="setting"><span>Usuario</span> {{ user.username }}</p>
+
+            <p class="setting"><span>Direccion E-mail</span> {{ user.email }}</p>
+
+            <p class="setting"><span>Nombre de tu mascota</span>{{ user.nombreMascota }}</p>
+
+            <p class="setting"><span>Especie</span>{{ user.especie | capitalize }}</p>
+
+            <p class="setting"><span>Pais</span>{{ user.nombrePais }}</p>
+
+            <p class="setting"><span>Ciudad</span>{{ user.nombreCiudad }}</p>
+
+            <p class="setting"><span>Ultima vez online</span>
+              Hoy{#{{ user.lastLogin | date('l, F j, Y') }}#}</p>
+
+      </section>
+      
+    </div><!-- @end #content -->
+  </div><!-- @end #w -->
+  	  {% if not form.vars.valid %}
+        <div id="dialogoPerfilError" title="Modificar Datos de Usuario">
+	        <form id="form_register" action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_edit">
+	          {{ form_widget(form) }}
+	          <div>
+	              <input class="boton" type="submit" value="Modificar" />
+	          </div>
+	        </form> 
+        </div>
+      {% endif %}
+      
+<script type="text/javascript">
+
+$(document).ready(function() {
+    initialize('{{ user.nombreCiudad }}');
+});
+</script>
+    
+{% endblock %}

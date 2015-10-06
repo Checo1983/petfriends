@@ -1,0 +1,12 @@
+{# src/JMPC/PetFriends/ProtectorsBundle/Resouces/views/Lost/localization.html.twig #}
+{# Plantilla que carga mapa de localización Google Maps #}
+
+<script>
+    $(document).ready(function(){
+        initialize('{{ lost.direccion }}');
+    });
+</script>
+
+<div class="box">
+    <div id="map_canvas"></div>
+</div>

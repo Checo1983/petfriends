@@ -1,0 +1,50 @@
+{# src/JMPC/PetFriends/ProtectorsBundle/Resources/views/Page/index.html.twig #}
+{# Plantilla que lista entradas en el blog del sitio web al realizar una peticion AJAX #}
+{# El administrador puede ademas crear entradas y borrar/editar existentes #}
+
+
+    {% if is_granted("ROLE_ADMIN") %} 
+        <span class="new_post"><a href={{ path ('jmpc_pet_friends_protectors_new') }}>Nueva Entrada</a></span>
+    {% endif %} 
+    {% for post in posts %}
+        <article class="blog">
+            <div class="date"><time datetime="{{ post[0].creado|date('c') }}">{{ post[0].creado|date('l, F j, Y') | localizeddate('full', 'none', 'es') | capitalize }}</time></div>
+            <header class="ici02">
+                <h2 class="ic1"><a href="{{ path('jmpc_pet_friends_protectors_list', { 'id': post[0].id, 'slug': post[0].slug }) }}">{{ post[0].titulo }}</a></h2>
+            </header>
+            <div class="box_img">
+                <img src="{{ asset(['img/lista_', post[0].imagen]|join) }}" />
+            </div>
+            <div class="snippet">
+                <p>{{ post[0].contenido(300) }}</p>
+                <div class="clear"></div>
+                <div class="button_continue">
+                    <a class="btn02" href="{{ path('jmpc_pet_friends_protectors_list', { 'id': post[0].id, 'slug': post[0].slug }) }}">Continua...</a>
+                </div>
+            </div>
+            
+            <footer class="meta">
+                <p>Comentarios: <a href="{{ path('jmpc_pet_friends_protectors_list', { 'id': post[0].id, 'slug': post[0].slug }) }}#comentarios">{{ post[0].comentarios|length }}</a></p>
+                <p>Enviado por <span class="highlight">{{ post[0].autor }}</span> a las {{ post[0].creado|date('h:iA') }}</p>
+                <p>Etiquetas: <span class="highlight">{{ post[0].tags }}</span></p>
+            </footer>
+            {% if is_granted("ROLE_ADMIN") %} 
+            <div class="links_post">
+                <a onclick="return confirm('¿Borrar entrada?')" href= {{ path ('jmpc_pet_friends_protectors_delete', { 'id': post[0].id, 'slug': post[0].slug }) }}>Borrar Entrada</a>
+                <a href={{ path ('jmpc_pet_friends_protectors_edit', { 'id': post[0].id, 'slug': post[0].slug }) }}>Editar Entrada</a>
+            </div>
+            
+            {% endif %}
+        </article>  
+    {% else %} {# Else for #} 
+        <div class="not_found"></div>
+        <div class="button_back">
+            <a class="btn02" href="{{ path('jmpc_pet_friends_protectors_animals_list') }}">Volver</a>
+        </div>
+    {% endfor %}
+    <div class="paginacion">
+        {{ knp_pagination_render(posts) }}
+    </div>
+      
+
+   

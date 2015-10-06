@@ -1,0 +1,48 @@
+{# src/JMPC/PetFriends/ProtectorsBundle/Resources/views/Adopted/index.html.twig #}
+{# Listado de animales que han sido adoptados por algun usuario del sitio web #}
+
+
+{% extends 'JMPCPetFriendsProtectorsBundle::base.html.twig' %}
+
+{% block title %}Amigos adoptados{% if is_granted("ROLE_ADMIN") %} - Administración{% endif %}{% endblock %}
+
+{% block section %}
+<div id="section" class="grid_8 prefix_1">
+    {% for adopted in adopteds %}
+        <article class="blog">
+            <div class="date"><time datetime="{{ adopted.fechaadopcion|date('c') }}">{{ adopted.fechaadopcion|date('l, F j, Y') | localizeddate('full', 'none', 'es') | capitalize }}</time></div>
+            <header class="ici02">
+                <h2 class="ic1"><a href="{{ path('jmpc_pet_friends_protectors_animals_view', { 'id': adopted.animal.idanimal, 'slug': adopted.animal.slug }) }}">{{ adopted.animal.nombre }}</a></h2>
+            </header>
+            <div class="box_img">
+                <img src="{{ asset(['img/lista_', adopted.animal.fotografia]|join) }}" />
+            </div>
+            <div class="snippet">
+                <p>{{ adopted.animal.historia(300) }}</p>
+                <div class="clear"></div>
+                <div class="button_continue">
+                    <a class="btn02" 
+                    href="{{ path('jmpc_pet_friends_protectors_animals_view', { 'id': adopted.animal.idanimal, 'slug': adopted.animal.slug }) }}">Ficha completa</a>
+                </div>
+            </div>
+            <footer class="meta">
+                <p>Adoptado por: <span class="highlight">{{ adopted.usuario.username | capitalize }}</span></p>
+                <p>Especie: <span class="highlight">{{ adopted.animal.tipo | capitalize }}</span></p>
+                <p>Raza: <span class="highlight">{{ adopted.animal.raza | capitalize }}</span></p>
+                <p>Sexo: <span class="highlight">{{ adopted.animal.sexo | capitalize }}</span></p>
+            </footer>
+        </article>
+    {% else %}
+        <div class="not_found"></div>
+        <div class="button_back">
+            <a class="btn02" href="{{ path('jmpc_pet_friends_protectors_animals_list') }}">Volver</a>
+        </div>
+    {% endfor %}
+        <div class="paginacion">
+            {{ knp_pagination_render(adopteds) }}
+        </div> 
+</div>
+{% endblock %}
+      
+      
+   

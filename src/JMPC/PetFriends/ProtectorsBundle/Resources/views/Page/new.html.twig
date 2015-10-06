@@ -1,0 +1,26 @@
+{# src/JMPC/PetsFriends/ProtectorsBundle/Resources/views/Page/new.html.twig #}
+{# Plantilla que crea nuevas entradas del blog en el sitio web #}
+{# Acceso: Administrador #}
+
+{% extends 'JMPCPetFriendsProtectorsBundle::base.html.twig' %}
+
+{% block title %}Administración Nueva entrada{% endblock %} 
+
+{% block section %}
+<div class="grid_8 prefix_1">
+    <h2>Nueva Entrada</h2><br>
+    {% if is_granted("ROLE_ADMIN") %} 
+        <div id="form">
+            {{ form (form) }}
+        </div>
+        <div id="preview_img" title="Vista previa" style="display:none">
+            <img id="img_preview" src="{{ asset ('img/avatar.png') }}" />
+        </div>
+    {% else %}
+        <div class="not_found"></div>
+    {% endif %}
+    <div class="button_back">
+        <a class="btn02" href="{{ path ('jmpc_pet_friends_protectors_homepage') }}">Volver</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,471 @@
+
+/**********************************************************/
+/*              Hoja de estilos Profile.css               */
+/*          Estiliza la pagina de perfil del usuario      */
+/*              del sitio web PetsFriends                 */
+/*                                                        */
+/**********************************************************/
+
+::selection
+{
+    background: #a4dcec;
+}
+
+::-moz-selection
+{
+    background: #a4dcec;
+}
+
+::-webkit-selection
+{
+    background: #a4dcec;
+}
+
+::-webkit-input-placeholder
+{
+    font-style: italic;
+    /* WebKit browsers */
+
+    color: #ccc;
+}
+
+:-moz-placeholder
+{
+    font-style: italic;
+    /* Mozilla Firefox 4 to 18 */
+
+    color: #ccc;
+}
+
+::-moz-placeholder
+{
+    font-style: italic;
+    /* Mozilla Firefox 19+ */
+
+    color: #ccc;
+}
+
+:-ms-input-placeholder
+{
+    font-style: italic;
+    /* Internet Explorer 10+ */
+
+    color: #ccc !important;
+}
+
+br
+{
+    line-height: 2.2em; 
+
+    display: block;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section
+{
+    display: block;
+}
+
+ol,
+ul
+{
+    list-style: none;
+}
+
+blockquote,
+q
+{
+    quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after
+{
+    content: '';
+    content: none;
+}
+
+strong
+{
+    font-weight: bold;
+}
+
+table
+{
+    border-spacing: 0; 
+    border-collapse: collapse;
+}
+
+.img_edit
+{
+    max-width: 100%;
+
+    cursor: pointer; 
+
+    border: 0;
+}
+
+#topbar
+{
+    overflow: hidden;
+
+    height: 36px;
+    padding: 10px 0 10px 0;
+
+    -webkit-transition: height .5s linear;
+       -moz-transition: height .5s linear;
+            transition: height .5s linear;
+    text-align: center;
+
+    background: #4f4a41;
+}
+
+#topbar a
+{
+    font-size: 1.3em;
+    font-weight: bold;
+    line-height: 1.25em;
+
+    text-decoration: none;
+
+    opacity: .5;
+    color: #fff;
+}
+
+#topbar a:hover
+{
+    opacity: 1;
+}
+
+#pet
+{
+    padding-top: 1px;
+}
+
+h1.profile
+{
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 2.5em;
+    line-height: 1.5em;
+
+    position: relative;
+
+    overflow: hidden;
+
+    margin-bottom: 20px;
+    padding: .1em 0;
+
+    text-align: center;
+    white-space: nowrap;
+    letter-spacing: -.05em;
+
+    color: #444;
+}
+
+h1.profile:before,
+h1.profile:after
+{
+    position: relative;
+
+    display: inline-block;
+
+    width: 50%;
+    height: 1px;
+
+    content: '';
+    vertical-align: middle;
+
+    background: #f0f0f0;
+}
+
+h1.profile:before
+{
+    left: -.5em;
+
+    margin: 0 0 0 -50%;
+}
+
+h1.profile:after
+{
+    left: .5em;
+
+    margin: 0 -50% 0 0;
+}
+
+h1.profile > span
+{
+    display: inline-block;
+
+    vertical-align: middle;
+    white-space: normal;
+}
+
+.box_profile
+{
+    width: 100%;
+    max-width: 730px;
+    height: 200px;
+    padding: 10px;
+
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 3px #ccc;
+}
+
+p
+{
+    font-size: 1.4em;
+    line-height: 1.55em;
+
+    display: block;
+
+    margin-bottom: 22px;
+
+    color: #555;
+}
+
+.center
+{
+    display: block;
+
+    text-align: center;
+}
+
+#w
+{
+    display: block;
+
+    width: 750px;
+    margin: 0 auto;
+    padding-top: 30px;
+    padding-bottom: 45px;
+}
+
+#content
+{
+    display: block;
+
+    width: 100%;
+    padding: 25px 20px;
+    padding-bottom: 35px;
+
+    background: #fff;
+    -webkit-box-shadow: rgba(0, 0, 0, .1) 0 1px 2px 0;
+       -moz-box-shadow: rgba(0, 0, 0, .1) 0 1px 2px 0;
+            box-shadow: rgba(0, 0, 0, .1) 0 1px 2px 0;
+}
+
+#userphoto,
+#petphoto
+{
+    display: block;
+    float: right;
+
+    margin-bottom: 8px;
+    margin-left: 10px;
+}
+
+#userphoto .img_profile
+{
+    display: block;
+
+    width: 200px;
+
+    background: #fff;
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,.4);
+       -moz-box-shadow: 0 1px 3px rgba(0,0,0,.4);
+            box-shadow: 0 1px 3px rgba(0,0,0,.4);
+}
+
+#petphoto .img_pet
+{
+    display: block;
+
+    width: 150px;
+
+    background: #fff;
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,.4);
+       -moz-box-shadow: 0 1px 3px rgba(0,0,0,.4);
+            box-shadow: 0 1px 3px rgba(0,0,0,.4);
+}
+
+.box_form_photo
+{
+    position: absolute;
+    top: 505px;
+    right: 265px;
+}
+
+.box_form_photo_pet
+{
+    position: absolute;
+    top: 585px;
+    left: 310px;
+}
+
+#profiletabs
+{
+    display: block;
+
+    height: 50px;
+    margin-bottom: 4px;
+}
+
+#profiletabs ul
+{
+    display: block;
+
+    width: 70%;
+    height: 50px; 
+
+    list-style: none;
+}
+#profiletabls ul li
+{
+    float: left;
+}
+
+#profiletabs ul li a
+{
+    font-size: 1.2em;
+    font-weight: bold;
+
+    display: block;
+    float: left;
+
+    margin-right: 7px;
+    padding: 8px 11px;
+
+    color: #666;
+    border: 1px solid #fff;
+    -webkit-border-radius: 5px;
+       -moz-border-radius: 5px;
+            border-radius: 5px;
+    -webkit-border-bottom-left-radius: 0;
+    -moz-border-radius-bottomleft: 0;
+            border-bottom-left-radius: 0;
+    background: #eae8db;
+}
+
+#profiletabs ul li a:hover
+{
+    text-decoration: none;
+
+    color: #565656;
+    background: #dad7c2;
+}
+
+#profiletabs ul li a.sel
+{
+    border-color: #d1cdb5;
+    background: #fff;
+}
+
+.hidden
+{
+    display: none;
+}
+
+.activity
+{
+    padding-bottom: 4px;
+
+    border-bottom: 1px solid #d6d1af;
+}
+
+.setting
+{
+    font-weight: normal;
+
+    display: block;
+
+    margin-bottom: 5px;
+    padding: 12px 10px 1px 70px;
+
+    border-top: 1px solid #d6d1af;
+}
+
+.setting span
+{
+    font-weight: bold;
+
+    float: left;
+
+    width: 250px;
+}
+
+.setting_foto span
+{
+    font-weight: bold;
+
+    float: left;
+
+    width: 250px;
+    padding-top: 17px;
+}
+
+.setting span img
+{
+    cursor: pointer;
+}
+
+#friendslist
+{
+    font-size: 1.1em;
+    font-weight: bold;
+
+    display: block;
+}
+
+#friendslist li
+{
+    line-height: 30px;
+}
+
+#friendslist li a
+{
+    line-height: 22px;
+
+    float: left;
+
+    height: 30px;
+    margin-right: 15px;
+    padding: 3px 6px;
+
+    border: 1px solid #c9d8b8;
+}
+
+#friendslist li a img
+{
+    float: left;
+
+    margin-right: 5px;
+}
+
+.clearfix:after
+{
+    line-height: 0;
+
+    display: block;
+    visibility: hidden;
+    clear: both;
+
+    height: 0; 
+
+    content: '.';
+}
+
+.clearfix
+{
+    display: inline-block;
+}

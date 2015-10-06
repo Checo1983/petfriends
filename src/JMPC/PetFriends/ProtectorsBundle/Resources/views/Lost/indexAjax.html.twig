@@ -1,0 +1,53 @@
+{# src/JMPC/PetFriends/ProtectorsBundle/Resources/views/Lost/index.html.twig #}
+{# Plantilla que lista entradas de animales desaparecidos publicados en el sitio web forma AJAX #}
+{# Cada usuario registrado puede crear entradas y editar las que haya creado #}
+{# El administrador puede ademas crear entradas y borrar/editar existentes #}
+
+
+    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+        <span class="new_post"><a href={{ path ('jmpc_pet_friends_protectors_lost_new') }}>Nuevo amigo desaparecido</a></span>
+    {% endif %} 
+    {% for lost in losts %}
+        <article class="blog">
+            <div class="date"><time datetime="{{ lost.fechaperdida|date('c') }}">{{ lost.fechaperdida|date('l, F j, Y') | localizeddate('full', 'none', 'es') | capitalize }}</time></div>
+            <header class="ici02">
+                <h2 class="ic1"><a href="{{ path('jmpc_pet_friends_protectors_lost_view', { 'id': lost.idanimalperdido, 'slug': lost.slug }) }}">{{ lost.nombre }}</a></h2>
+            </header>
+            <div class="box_img">
+                <img src="{{ asset(['img/lista_', lost.fotografia]|join) }}" />
+            </div>
+            <div class="snippet">
+                <p>{{ lost.mensaje(300) }}</p>
+                <div class="clear"></div>
+                <div class="button_continue">
+                    <a class="btn02" href="{{ path('jmpc_pet_friends_protectors_lost_view', { 'id': lost.idanimalperdido, 'slug': lost.slug}) }}">Ficha completa</a>
+                </div>
+            </div>
+            <footer class="meta">
+                <p>Especie: <span class="highlight">{{ animal.tipo | capitalize }}</span></p>
+                <p>Raza: <span class="highlight">{{ animal.raza | capitalize }}</span></p>
+                <p>Sexo: <span class="highlight">{{ animal.sexo | capitalize }}</span></p>
+            </footer>
+            <div class="links_post">
+            {% if is_granted("ROLE_ADMIN") %} 
+                <a id="delete" onclick="return confirm('¿Borrar entrada?')" href= {{ path ('jmpc_pet_friends_protectors_lost_delete', { 'id': lost.idanimalperdido, 'slug': lost.slug }) }}>Borrar Entrada</a>
+                <a href={{ path ('jmpc_pet_friends_protectors_lost_edit', { 'id': lost.idanimalperdido, 'slug': lost.slug }) }}>Editar Entrada</a>
+            {% elseif is_granted("IS_AUTHENTICATED_REMEMBERED") %} 
+                <a href={{ path ('jmpc_pet_friends_protectors_lost_edit', { 'id': lost.idanimalperdido, 'slug': lost.slug }) }}>Editar Entrada</a>
+            {% endif %}
+            </div>
+        </article> 
+        {% else %} 
+        <div class="not_found"></div>
+        <div class="button_back">
+            <a class="btn02" href="{{ path('jmpc_pet_friends_protectors_animals_list') }}">Volver</a>
+        </div>
+    {% endfor %}
+    <div class="paginacion">
+        {{ knp_pagination_render(losts) }}
+    </div>
+
+
+      
+      
+   

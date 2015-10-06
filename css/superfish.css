@@ -1,0 +1,169 @@
+.menu_block
+{
+    position: relative;
+
+    float: right;
+
+    padding-top: 25px;
+}
+
+nav > .sf-menu
+{
+    text-align: center;
+}
+
+nav
+{
+    position: relative;
+
+    padding: 0 0 0 0;
+}
+
+.sf-menu ul
+{
+    position: absolute;
+    top: -999px;
+
+    display: none;/* left offset of submenus need to match (see below) */
+}
+
+.sf-menu li
+{
+    position: relative; 
+
+    float: left;
+}
+
+.sf-menu > li
+{
+    position: relative;
+
+    float: left;
+}
+
+.sf-menu > li + li
+{
+    margin-left: 40px;
+}
+
+.sf-menu > li + li:after
+{
+    position: absolute;
+    top: 0;
+    top: -4px;
+    left: -25px;
+
+    display: block;
+
+    width: 1px;
+    height: 33px;
+
+    content: '';
+
+    background: url(../img/menu_separator.png) 0 0 no-repeat;
+}
+
+.sf-menu > li:first-child
+{
+    margin-left: 0;
+}
+
+.sf-menu > li:hover,
+.sf-menu > li.sfHover,
+.sf-menu > li.current
+{
+    border-color: #a92c11;
+}
+
+.sf-menu > li > a
+{
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 18px;
+    line-height: 20px;
+
+    position: relative;
+    position: relative;
+    z-index: 999;
+
+    color: #c5c3c3;
+}
+
+.sf-menu > li.sfHover > a,
+.sf-menu > li.current > a,
+.sf-menu > li:hover > a:hover
+{
+    color: #fff;
+}
+
+/*================================>> 2 Level <<========================================*/
+
+.sf-menu li ul,
+.sf-menu li.sfHover > ul
+{
+    z-index: 999;
+    top: 27px;
+    left: -17px;
+
+    width: 170px;
+    padding-top: 21px;
+    padding-bottom: 18px;
+
+    background: url(../img/sub_bg.png) 0 0 repeat;
+}
+
+.sf-menu li ul li
+{
+    float: none !important;
+
+    margin-bottom: 2px;
+    padding-left: 30px;
+
+    text-align: left;
+}
+
+.sf-menu li ul li:first-child
+{
+    padding-top: 0;
+
+    border: none;
+}
+
+.sf-menu li ul li a
+{
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 14px;
+    line-height: 18px;
+
+    position: relative;
+
+    color: #000;
+}
+
+.sf-menu li li a:hover,
+.sf-menu li.sfHover li.sfHover > a
+{
+    color: #f98d0d;
+}
+
+/*================================>> 3 Level <<========================================*/
+
+.sf-menu li.sfHover li.sfHover ul
+{
+    position: relative !important;
+    top: 0 !important;
+
+    padding-top: 1px;
+
+    text-align: center;
+}
+
+.sf-menu li li ul li
+{
+    text-align: center !important;
+}
+
+.sf-menu li li ul li a
+{
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+}

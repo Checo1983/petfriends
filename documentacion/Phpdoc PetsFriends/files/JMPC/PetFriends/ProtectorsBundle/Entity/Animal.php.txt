@@ -1,0 +1,580 @@
+<?php
+
+
+/********************************************/
+/*       Clase PHP Entidad Animal           */
+/*       Relacion 1 - N con entidad User    */ 
+/*       Campos con validacion Validator    */ 
+/*                                          */
+/********************************************/
+
+namespace JMPC\PetFriends\ProtectorsBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\ArrayCollection;
+
+/**
+ * Animal
+ *
+ * @ORM\Table(name="animal", uniqueConstraints={@ORM\UniqueConstraint(name="idAnimal_UNIQUE", columns={"idAnimal"})})
+ * @ORM\Entity
+ */
+class Animal
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idAnimal", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idanimal;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nombre", type="string", length=50, nullable=false)
+     * @Assert\NotNull(message="*Debe escribir un nombre")
+     * @Assert\Length(
+     *      min = "4",
+     *      max = "10",
+     *      minMessage = "*El nombre debe tener {{ limit }} caracteres minimo",
+     *      maxMessage = "*El nombre no debe tener mas de {{ limit }} caracteres")
+     */
+    private $nombre;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tipo", type="string", length=50, nullable=false)
+     */
+    private $tipo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="raza", type="string", length=50, nullable=false)
+     * @Assert\NotNull(message="*Debe especificar una raza")
+     * @Assert\Length(
+     *      min = "5",
+     *      max = "20",
+     *      minMessage = "*La raza debe tener {{ limit }} caracteres minimo",
+     *      maxMessage = "*La raza no debe tener mas de {{ limit }} caracteres")
+     * @Assert\Regex(
+     *     pattern="/\d/",
+     *     match=false,
+     *     message="*La raza no puede contener numeros")
+     */
+    private $raza;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tamano", type="string", length=50, nullable=false)
+     */
+    private $tamano;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="color", type="string", length=50, nullable=false)
+     */
+    private $color;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="comportamiento", type="string", length=50, nullable=false)
+     */
+    private $comportamiento;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="historia", type="text", nullable=false)
+     * @Assert\NotNull(message="*Debe escribir un mensaje")
+     * @Assert\Length(
+     *      min = "100",
+     *      max = "1000",
+     *      minMessage = "*El mensaje debe tener {{ limit }} caracteres minimo",
+     *      maxMessage = "*El mensaje no debe tener mas de {{ limit }} caracteres")
+     */
+    private $historia;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="fotografia", type="string", length=500, nullable=false)
+     */
+    private $fotografia;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fechaAlta", type="date", nullable=false)
+     */
+    private $fechaalta;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="chip", type="boolean", nullable=false)
+     */
+    private $chip;
+    
+    /**
+     * @ORM\Column(type="string")
+     */
+    protected $slug;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    protected $sexo;
+    
+    /**
+     * @Assert\File(maxSize="1M", mimeTypes={"image/png", "image/jpeg", "image/pjpeg"})
+     */
+    private $fotografiaArchivo;
+    
+    /**
+     * @ORM\Column(type="string")
+     */
+    protected $pais;
+    
+    /**
+     * @ORM\Column(type="string")
+     */
+    protected $ciudad;
+    
+    /**
+     * @ORM\Column(type="string")
+     * @Assert\NotNull(message="*Debe escribir una dirección")
+     * @Assert\Length(
+     *      min = "8",
+     *      max = "25",
+     *      minMessage = "*La dirección debe tener {{ limit }} caracteres minimo",
+     *      maxMessage = "*La dirección no debe tener mas de {{ limit }} caracteres")
+     */
+    protected $direccion;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Adoption", mappedBy="animal")
+     */
+    protected $adopciones;
+    
+    
+    public function __construct()
+    {
+        $this->setFechaAlta(new \DateTime());
+        $this->adopciones = new ArrayCollection();
+    }
+
+    /**
+     * Get idanimal
+     *
+     * @return integer 
+     */
+    public function getIdanimal()
+    {
+        return $this->idanimal;
+    }
+
+    /**
+     * Set nombre
+     *
+     * @param string $nombre
+     * @return Animal
+     */
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+
+        $this->setSlug($this->nombre);
+    }
+
+    /**
+     * Get nombre
+     *
+     * @return string 
+     */
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
+
+    /**
+     * Set tipo
+     *
+     * @param string $tipo
+     * @return Animal
+     */
+    public function setTipo($tipo)
+    {
+        $this->tipo = $tipo;
+
+        return $this;
+    }
+
+    /**
+     * Get tipo
+     *
+     * @return string 
+     */
+    public function getTipo()
+    {
+        return $this->tipo;
+    }
+
+    /**
+     * Set raza
+     *
+     * @param string $raza
+     * @return Animal
+     */
+    public function setRaza($raza)
+    {
+        $this->raza = $raza;
+
+        return $this;
+    }
+
+    /**
+     * Get raza
+     *
+     * @return string 
+     */
+    public function getRaza()
+    {
+        return $this->raza;
+    }
+
+    /**
+     * Set tamano
+     *
+     * @param string $tamano
+     * @return Animal
+     */
+    public function setTamano($tamano)
+    {
+        $this->tamano = $tamano;
+
+        return $this;
+    }
+
+    /**
+     * Get tamano
+     *
+     * @return string 
+     */
+    public function getTamano()
+    {
+        return $this->tamano;
+    }
+
+    /**
+     * Set color
+     *
+     * @param string $color
+     * @return Animal
+     */
+    public function setColor($color)
+    {
+        $this->color = $color;
+
+        return $this;
+    }
+
+    /**
+     * Get color
+     *
+     * @return string 
+     */
+    public function getColor()
+    {
+        return $this->color;
+    }
+
+    /**
+     * Set comportamiento
+     *
+     * @param string $comportamiento
+     * @return Animal
+     */
+    public function setComportamiento($comportamiento)
+    {
+        $this->comportamiento = $comportamiento;
+
+        return $this;
+    }
+
+    /**
+     * Get comportamiento
+     *
+     * @return string 
+     */
+    public function getComportamiento()
+    {
+        return $this->comportamiento;
+    }
+
+    /**
+     * Set historia
+     *
+     * @param string $historia
+     * @return Animal
+     */
+    public function setHistoria($historia)
+    {
+        $this->historia = $historia;
+
+        return $this;
+    }
+
+    /**
+     * Get historia
+     *
+     * @return string 
+     */
+    public function getHistoria()
+    {
+        return $this->historia;
+    }
+
+    /**
+     * Set pais
+     *
+     * @param string $pais
+     * @return Animal
+     */
+    public function setPais($pais)
+    {
+        $this->pais = $pais;
+
+        return $this;
+    }
+
+    /**
+     * Get pais
+     *
+     * @return string
+     */
+    public function getPais()
+    {
+        return $this->pais;
+    }
+
+    /**
+     * Set ciudad
+     *
+     * @param string $ciudad
+     * @return Animal
+     */
+    public function setCiudad($ciudad)
+    {
+        $this->ciudad = $ciudad;
+
+        return $this;
+    }
+
+    /**
+     * Get ciudad
+     *
+     * @return string 
+     */
+    public function getCiudad()
+    {
+        return $this->ciudad;
+    }
+
+     /**
+     * Set direccion
+     *
+     * @param string $direccion
+     * @return Animal
+     */
+    public function setDireccion($direccion)
+    {
+        $this->direccion = $direccion;
+
+        return $this;
+    }
+
+    /**
+     * Get direccion
+     *
+     * @return string 
+     */
+    public function getDireccion()
+    {
+        return $this->direccion;
+    }
+
+    /**
+     * Set fotografia
+     *
+     * @param string $fotografia
+     * @return Animal
+     */
+    public function setFotografia($fotografia)
+    {
+        $this->fotografia = $fotografia;
+
+        return $this;
+    }
+
+    /**
+     * Get fotografia
+     *
+     * @return string 
+     */
+    public function getFotografia()
+    {
+        return $this->fotografia;
+    }
+
+    /**
+     * Set fechanac
+     *
+     * @param \DateTime $fechaalta
+     * @return Animal
+     */
+    public function setFechaAlta($fechaalta)
+    {
+        $this->fechaalta = $fechaalta;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaalta
+     *
+     * @return \DateTime 
+     */
+    public function getFechaAlta()
+    {
+        return $this->fechaalta;
+    }
+
+    /**
+     * Set chip
+     *
+     * @param boolean $chip
+     * @return Animal
+     */
+    public function setChip($chip)
+    {
+        $this->chip = $chip;
+
+        return $this;
+    }
+
+    /**
+     * Get chip
+     *
+     * @return boolean 
+     */
+    public function getChip()
+    {
+        return $this->chip;
+    }
+    
+    /**
+     * Set sexo
+     *
+     * @param string $sexo
+     * @return Animal
+     */
+    public function setSexo($sexo)
+    {
+        $this->sexo = $sexo;
+
+        return $this;
+    }
+
+    /**
+     * Get sexo
+     *
+     * @return string 
+     */
+    public function getSexo()
+    {
+        return $this->sexo;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return Animal
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $this->slugify($slug);
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string 
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+    
+    public function setFotografiaArchivo($fotografiaArchivo) 
+    {
+        $this->fotografiaArchivo = $fotografiaArchivo;
+        
+        return $this;
+    }
+    
+    public function getFotografiaArchivo()
+    {
+        return $this->fotografiaArchivo;
+    }
+
+    /**
+     * Get adopciones
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAdopciones()
+    {
+        return $this->adopciones;
+    }
+    
+    public function slugify($text)
+    {
+        // sustituye caracteres de espaciado o dígitos con un -
+        $text = preg_replace('#[^\\pL\d]+#u', '-', $text);
+
+        // recorta espacios en ambos extremos
+        $text = trim($text, '-');
+
+
+        // translitera
+        if (function_exists('iconv'))
+        {
+            $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
+        }
+
+        // cambia a minúsculas
+        $text = strtolower($text);
+
+        // elimina caracteres indeseables
+        $text = preg_replace('#[^-\w]+#', '', $text);
+
+        if (empty($text))
+        {
+            return 'n-a';
+        }
+
+        return $text;
+    }
+}
+

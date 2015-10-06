@@ -1,0 +1,77 @@
+{# src/JMPC/PetFriends/ProtectorsBundle/Resouces/views/Animals/view.html.twig #}
+{# Plantilla que ver entradas individuales de animales publicados #}
+{# Acceso: Anonimo #}
+
+{% extends 'JMPCPetFriendsProtectorsBundle::base.html.twig' %}
+
+{% block title %}Nuestros amigos{% if is_granted("ROLE_ADMIN") %} - Administración{% endif %}{% endblock %}
+
+{% block sidebar %}{% endblock %}
+
+{% block section %}
+<div class="grid_12 prefix_1">
+    <article class="blog">
+        <header class="ici02">
+            <div class="date"><time datetime="{{ animal.fechaalta|date('c') }}">{{ animal.fechaalta|date('l, F j, Y') | localizeddate('full', 'none', 'es') | capitalize }}</time></div>
+            <h2 class="ic1">{{ animal.nombre }}</h2>
+        </header>
+        
+        
+        <section class="adopt_content">
+            <img src="{{ asset(['img/', animal.fotografia]|join) }}" alt="Imagen de {{ animal.nombre }} no encontrada" class="large" />
+         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %} 
+            <div class="btn_adopt"><a class="btn" href="#">Adoptame</a></div>
+         {% else %}
+            <div class="btn_adopt"><a class="btn" href="#" disabled="disabled">Adoptame</a></div>
+         {% endif %}
+        </section>
+        
+        <div id="fieldset_content">
+            <fieldset><legend>Ficha de {{ animal.nombre }}</legend>
+                <div id="animal_token">
+                    <div><span class="title_span">Raza:</span>
+                    <span>{{ animal.tipo | capitalize }} 
+                    {{ animal.raza }}</span>
+                    </div>
+                    <div><span class="title_span">Sexo:</span>
+                        <span>{{ animal.sexo | capitalize }}</span>
+                    </div>
+                    <div><span class="title_span">Tamaño:</span>
+                        <span>{{ animal.tamano | capitalize }}</span>
+                    </div>
+                    <div class="clear"></div>
+                    <div><span class="title_span">Color:</span>
+                        <span class="color_span" style="background:{{ animal.color }}">Color</span>
+                    </div>
+                    <div><span class="title_span">Comportamiento:</span>
+                        <span>{{ animal.comportamiento | capitalize }}</span>
+                    </div>
+                    <div><span class="title_span">Chip:</span>
+                        {% if animal.chip == 1 %}
+                        <span>Si</span>
+                        {% else %}
+                        <span>No</span>
+                        {% endif %}
+                    </div>
+                    <div class="clear"></div>
+                    <div><span class="title_span">Historia:</span>
+                        <span class="title_span_textarea">{{ animal.historia }}</span>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+        <section class="google_maps" id="localization">
+            <section class="previous-comments">
+                <h3>Localización</h3>
+                {% include 'JMPCPetFriendsProtectorsBundle:Animals:localization.html.twig' %}
+            </section>
+        </section>
+    </article>
+    <div class="clear"></div>
+    
+    <div class="button_back">
+        <a class="btn02" href="{{ path('jmpc_pet_friends_protectors_animals_list') }}">Volver</a>
+    </div>
+</div>
+{% endblock %}
+
